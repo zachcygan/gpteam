@@ -14,7 +14,8 @@
     "sequelize": "^6.30.0"
   },
   "scripts": {
-    "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css"
+    "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css --watch",
+    "start": "nodemon server.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
