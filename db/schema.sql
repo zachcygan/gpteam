@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS gpteam_db;
+CREATE DATABASE gpteam_db;
