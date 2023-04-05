@@ -2,43 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/output.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjectPerfect Homepage</title>
+    <link rel="stylesheet" href="./public/css/output.css">
 </head>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
+<body class="antialiased font-sans bg-gray-100">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-75 backdrop-blur-md">
+        <div class="container mx-auto px-4 py-2 flex items-center justify-between">
+            <a href="#" class="font-semibold text-xl text-indigo-600">ProjectPerfect</a>
+            <button class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-md">Sign Up</button>
+        </div>
     </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    {{{ body }}}
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.js"></script>
+    <script src="../../public/js/chat.js"></script>
 </body>
 
 </html>
