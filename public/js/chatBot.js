@@ -5,7 +5,6 @@ const configuration = new Configuration({
 })
 
 const openai = new OpenAIApi(configuration)
-
 const chatButton = $('#chatButton');
 const chatWindow = $('#chatWindow');
 const closeChat = $('#closeChat');
