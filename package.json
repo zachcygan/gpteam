@@ -10,5 +10,8 @@
     "express-sessions": "^1.0.6",
     "mysql2": "^3.2.0",
     "sequelize": "^6.30.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
   }
 }
