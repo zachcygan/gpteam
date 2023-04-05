@@ -1,0 +1,6 @@
+.chat-bubble {
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}

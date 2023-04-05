@@ -15,9 +15,15 @@
   },
   "scripts": {
     "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css --watch",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start": "webpack serve",
+    "build": "webpack"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.1"
+    "dotenv-webpack": "^8.0.1",
+    "tailwindcss": "^3.3.1",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2"
   }
 }

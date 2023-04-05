@@ -1,19 +1,9 @@
-require('dotenv').config();
-const { Configuration, OpenAIApi } = require('openai');
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-})
-
-const openai = new OpenAIApi(configuration)
 const chatButton = $('#chatButton');
 const chatWindow = $('#chatWindow');
 const closeChat = $('#closeChat');
 const chatInput = $('#chatInput');
 const chatForm = $('#chatForm');
 const chatMessages = $('#chatMessages');
-const userChat = $('<p>');
-const chatResponse = $('<p>');
-const converationHistory = [];
 
 chatButton.on('click', () => {
     chatWindow.removeClass('hidden');
@@ -27,6 +17,10 @@ closeChat.on('click', () => {
 
 chatForm.on('submit', (event) => {
     event.preventDefault();
+
+    const userChat = $('<p>');
+    const chatResponse = $('<p>');  
+
     userChat.text(chatInput.val());
 
     const chatStart = $('<div>')
@@ -36,11 +30,18 @@ chatForm.on('submit', (event) => {
     chatStart.addClass(['chat', 'chat-start'])
 
     chatResponse.addClass('chat-bubble');
-    userChat.addClass('chat-bubble');
+    userChat.addClass(['chat-bubble']);
 
     chatEnd.append(userChat);
     chatStart.append(chatResponse);
     chatMessages.append(chatEnd);
+
+    chatInput.val('');
+    scrollToBottom();
 })
+
+const scrollToBottomm = () => {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
 
