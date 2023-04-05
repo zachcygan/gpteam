@@ -9,11 +9,11 @@
     "express-session": "^1.17.3",
     "express-sessions": "^1.0.6",
     "mysql2": "^3.2.0",
-    "nodemon": "^2.0.22",
     "sequelize": "^6.30.0"
   },
   "scripts": {
-    "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css"
+    "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css --watch",
+    "start": "nodemon server.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
