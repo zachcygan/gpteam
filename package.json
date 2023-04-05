@@ -11,6 +11,9 @@
     "mysql2": "^3.2.0",
     "sequelize": "^6.30.0"
   },
+  "scripts": {
+    "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css"
+  },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
   }
