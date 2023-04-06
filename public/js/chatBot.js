@@ -4,6 +4,7 @@ const closeChat = $('#closeChat');
 const chatInput = $('#chatInput');
 const chatForm = $('#chatForm');
 const chatMessages = $('#chatMessages');
+const botResponding = $('#botResponding')
 
 chatButton.on('click', () => {
     chatWindow.removeClass('hidden');
@@ -19,7 +20,6 @@ chatForm.on('submit', (event) => {
     event.preventDefault();
 
     const userChat = $('<p>');
-    const chatResponse = $('<p>');  
 
     userChat.text(chatInput.val());
 
@@ -27,21 +27,55 @@ chatForm.on('submit', (event) => {
     const chatEnd = $('<div>')
 
     chatEnd.addClass(['chat', 'chat-end'])
+
     chatStart.addClass(['chat', 'chat-start'])
 
-    chatResponse.addClass('chat-bubble');
     userChat.addClass(['chat-bubble']);
 
     chatEnd.append(userChat);
-    chatStart.append(chatResponse);
     chatMessages.append(chatEnd);
 
+    fetchBotResponse(chatInput.val())
+
     chatInput.val('');
+    botResponding.removeClass('hidden')
+    
     scrollToBottom();
 })
 
-const scrollToBottomm = () => {
+const scrollToBottom = () => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+const fetchBotResponse = async (userMessage) => {
+    try {
+        const response = await fetch('/openAI/botResponse', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userMessage })
+        });
+
+        if (!response.ok) {
+            console.log('ERROR FETCHING AI RESPNOSE')
+        }
+
+        const data = await response.json();
+
+        const chatResponse = $('<div>');
+        const botResponse = $('<p>');
+
+        chatResponse.addClass(['chat', 'chat-start']);
+        botResponse.addClass(['chat-bubble'])
+
+        botResponse.text(data.message)
+
+        chatResponse.append(botResponse);
+        chatMessages.append(chatResponse);
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 

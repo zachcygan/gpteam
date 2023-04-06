@@ -17,10 +17,10 @@
             Chat with our Bot
             <button id="closeChat" class="text-white">&times;</button>
         </div>
-        <div id="chatMessages" class="overflow-x-hidden overflow-y-scroll p-4 flex flex-col h-72">
-            <!-- Chat messages will be added here -->
-        </div>
-        <progress class="progress w-full hidden"></progress>
+        <div id="chatMessages" class="overflow-x-hidden overflow-y-scroll p-4 flex flex-col h-72"></div>
+
+        <progress class="progress w-full hidden" id="botResponding"></progress>
+        
         <form id="chatForm" class="p-4 border-t border-gray-200">
             <input id="chatInput" type="text"
                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
