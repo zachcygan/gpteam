@@ -15,12 +15,13 @@
         <div
             class="h-14 px-4 py-2 bg-indigo-600 text-white font-semibold flex items-center justify-between rounded-t-lg">
             Chat with our Bot
+            <button id="resetBot" class="text-white">reset</button>
             <button id="closeChat" class="text-white">&times;</button>
         </div>
         <div id="chatMessages" class="overflow-x-hidden overflow-y-scroll p-4 flex flex-col h-72"></div>
 
         <progress class="progress w-full hidden" id="botResponding"></progress>
-        
+
         <form id="chatForm" class="p-4 border-t border-gray-200">
             <input id="chatInput" type="text"
                 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"

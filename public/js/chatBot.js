@@ -5,6 +5,7 @@ const chatInput = $('#chatInput');
 const chatForm = $('#chatForm');
 const chatMessages = $('#chatMessages');
 const botResponding = $('#botResponding')
+const resetBot = $('#resetBot')
 
 chatButton.on('click', () => {
     chatWindow.removeClass('hidden');
@@ -73,9 +74,19 @@ const fetchBotResponse = async (userMessage) => {
 
         chatResponse.append(botResponse);
         chatMessages.append(chatResponse);
+
+        botResponding.addClass('hidden')
     } catch (err) {
         console.log(err)
     }
 }
 
+const resetConversation = () => {
+    conversationHistory = [];
+    chatMessages.empty();
+};
+
+resetBot.on('click', () => {
+    resetConversation();
+})
 
