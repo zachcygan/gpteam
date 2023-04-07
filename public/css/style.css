@@ -4,3 +4,130 @@
     overflow-wrap: break-word;
     white-space: pre-wrap;
 }
+
+body {
+    background-color: #2b303a;
+}
+.photo-frame {
+    background-color: #fff;
+    padding: 10px;
+    border: 2px solid #4f46e5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 50%;
+    margin-left: 450px;
+}
+
+.photo-frame img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+.comment-form {
+    background-color: #f7fafc;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.comment-form label {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.comment-form textarea {
+    width: 99%;
+    padding: 10px;
+    border: 2px solid #cbd5e0;
+    border-radius: 5px;
+    resize: none;
+    min-height: 75px;
+}
+
+.comment-form button {
+    background-color: #4f46e5;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #4338ca;
+}
+
+.comment {
+    border-bottom: 2px solid #e2e8f0;
+    padding: 20px 0;
+}
+
+.comment h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.comment p {
+    margin-bottom: 10px;
+}
+
+.comment-time {
+    font-size: 0.75rem;
+    color: #a0aec0;
+}
+
+.comment-reply {
+    font-size: 0.875rem;
+    color: #4f46e5;
+    cursor: pointer;
+}
+
+.reply-form {
+    background-color: #f7fafc;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cbd5e0;
+    border-radius: 5px;
+    resize: none;
+    min-height: 100px;
+    margin-bottom: 10px;
+}
+
+.reply-form button {
+    background-color: #46e59b;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.reply-form button:hover {
+    background-color: #2c6945;
+}
+.title {
+justify-content: center;
+margin-left: 850px;
+font-size: 40px;
+color: #e2e8f0;
+}

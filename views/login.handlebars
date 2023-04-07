@@ -35,23 +35,32 @@
 
     {{!-- end navbar --}}
 
-{{!-- log in form --}}
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+<body class="bg-gray-100">
+    <div class="flex flex-col items-center justify-center min-h-screen py-2">
+      <div class="bg-white p-10 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-5">Login to your account</h1>
+        <form>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="email">
+              Email
+            </label>
+            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email">
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="password">
+              Password 
+            </label>
+            <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password">
+          </div>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Login
+          </button>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-
-  {{!-- sign up form --}}
+    </div>
+  </body>
+  
+    {{!-- sign up form --}}
   <div class="col-md-6">
     <h2>Signup</h2>
 
@@ -74,5 +83,7 @@
     </form>
   </div>
 </div>
+
+
 
 <script src="./js/login.js"></script>
