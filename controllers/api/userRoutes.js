@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const correctPassword = await userData.checkPassword(req.body.password);
+        const correctPassword = userData.checkPassword(req.body.password);
 
         if (!correctPassword) {
             res.status(400).json({ message: 'Incorrect email or password, please try again'})
@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
     try {
         const userData = await User.create({
-            name: req.body.username,
+            name: req.body.name,
             email: req.body.email,
             password: req.body.password
         });
