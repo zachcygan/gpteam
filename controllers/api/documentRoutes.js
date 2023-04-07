@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
             user_id,
         });
 
-        res.status(200).json(newPost);
+        res.status(200).json(newDocPost);
     } catch (err) {
         res.status(500).json(err)
     }
@@ -35,7 +35,7 @@ router.delete('/:id', async (req, res) => {
         }
 
         res.status(200).json(docData);
-        
+
     } catch (err) {
         res.status(500).json(err)
     }
