@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css --watch",
-    "start": "nodemon server.js",
+    "nodemon-start": "nodemon server.js",
+    "start": "concurrently \"npm run build-css\" \"npm run nodemon-start\"",
     "build": "webpack"
   },
   "devDependencies": {
