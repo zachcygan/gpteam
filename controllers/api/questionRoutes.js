@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Question, Comment } = require('../../models')
+const { User, Question, Comment } = require('../../models')
 
 router.post('/', async (req, res) => {
     try {  
@@ -13,6 +13,25 @@ router.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 });
+
+router.get('/:id', async (req, res) => {
+    try {
+        const questionData = await Document.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name']
+                }
+            ]
+        })
+
+        const question = questionData.get({ plain: true })
+
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 router.delete('/:id', async (req, res) => {
     try {
