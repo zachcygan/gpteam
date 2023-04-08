@@ -154,9 +154,27 @@ color: #e2e8f0;
     text-align: center;
     font-size: larger;
     font-weight: 700;
+    text-decoration: underline;
 }
 #file-upload-form{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.new-post-title{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    text-decoration: underline;
+}
+#question-upload-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-form{
+    display: flex;
+    flex-wrap: wrap;
 }
