@@ -1,21 +1,21 @@
 const router = require('express').Router();
 const withAuth = require('../util/auth');
 const { User, Comment, Document, Question } = require('../models');
+const session = require('express-session');
 
 router.get('/', async (req, res) => {
-    try {
-        
-        console.log(req.session.logged_in)
+  try {
 
-        res.render('homepage', {
-          logged_in: req.session.logged_in
-        })
-    } catch (err) {
-        res.status(500).json(err)
-    }
+
+    res.render('homepage', {
+      logged_in: req.session.logged_in
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
 })
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
@@ -40,7 +40,19 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  if (req.session.errorMessage !== null) {
+    res.render('login', {
+      errorMessage: req.session.errorMessage
+    });
+  } else {
+    res.render('login', {
+      errorMessage: null
+    })
+  }
+  
+  req.session.errorMessage = null;
+
+  
 });
 
 router.get('/create', (req, res) => {
