@@ -52,11 +52,12 @@ const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('career_field', career_field);
   
     try {
       const response = await fetch('/api/uploads/upload', {
         method: 'POST',
-        body: formData, career_field
+        body: formData
       });
   
       if (response.ok) {
