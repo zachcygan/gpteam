@@ -1,10 +1,9 @@
-const { S3 } = require('aws-sdk');
 const uuid = require('uuid').v4;
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const multer = require('multer');
 require('dotenv').config();
 const router = require('express').Router();
-
+const { Document } = require('../../models')
 
 const s3Uploadv3 = async (files) => {
     const s3client = new S3Client();
@@ -21,18 +20,6 @@ const s3Uploadv3 = async (files) => {
         params.map((param) => s3client.send(new PutObjectCommand(param)))
     );
 };
-
-exports.s3Uploadv2 = async (file) => {
-    const s3 = new S3()
-
-    const param = {
-        Bucket: process.env.AWS_BUCKET.NAME,
-        Key: `uploads/${uuid()}-${file.originalname}`,
-        Body: file.buffer
-    }
-    const result = await s3.upload(param).promise();
-    return result;
-}
 
 //these are multer middleware for aws storage
 const storage = multer.memoryStorage();
@@ -53,7 +40,14 @@ router.post("/upload", upload.array("file"), async (req, res) => {
     try {
         const results = await s3Uploadv3(req.files);
         console.log(results);
-        return res.json({ status: "success" });
+
+        const document = await Document.create({
+            bucket_link: results.location, 
+            career_field: req.body.career_field,
+            user_id: req.user_id
+        })
+        
+        return res.json({ status: "success", document });
     } catch (err) {
         console.log(err);
     }

@@ -46,6 +46,7 @@ const newQuestionFormHandler = async (event) =>{
 //sends user document info to the AWS bucket
 const AWSupload = async (event) => {
 event.preventDefault();
+const career_field = document.getElementById('file-industry').value.trim();
 
 const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
@@ -55,7 +56,7 @@ const fileInput = document.getElementById('file-input');
     try {
       const response = await fetch('/api/uploads/upload', {
         method: 'POST',
-        body: formData,
+        body: formData, career_field
       });
   
       if (response.ok) {
@@ -73,6 +74,6 @@ const fileInput = document.getElementById('file-input');
 
 
 
-document.querySelector('#file-upload-form').addEventListener('submit', newDocumentFormHandler);
+// document.querySelector('#file-upload-form').addEventListener('submit', newDocumentFormHandler);
 document.querySelector('#question-upload-form').addEventListener('submit', newQuestionFormHandler);
 document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);
