@@ -8,6 +8,6 @@ router.use('/users', userRoutes);
 router.use('/post', questionRoutes);
 router.use('/document', documentRoutes);
 router.use('/question', questionRoutes);
-router.use('/upload', uploadRoutes)
+router.use('/uploads', uploadRoutes)
 
 module.exports = router;

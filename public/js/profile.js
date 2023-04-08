@@ -22,24 +22,57 @@ const newQuestionFormHandler = async (event) =>{
   }
 }
 
-const newDocumentFormHandler = async (event) =>{
-    event.preventDefault();
-    const bucket_link = `https://gpteam-upload-bucket.s3.amazonaws.com/upload/${filename}`
-    const career_field = document.getElementById('file-industry').value.trim();
+//document information to send to DB
+// const newDocumentFormHandler = async (event) =>{
+//     event.preventDefault();
+//     const bucket_link = `https://gpteam-upload-bucket.s3.amazonaws.com/upload/${filename}`
+//     const career_field = document.getElementById('file-industry').value.trim();
    
-    if (bucket_link && career_field){
-    const response = await fetch(`/api/document`, {
+//     if (bucket_link && career_field){
+//     const response = await fetch(`/api/document`, {
+//         method: 'POST',
+//         body: JSON.stringify({ question_text, career_field }),
+//         headers: { 'Content-Type': 'application/json' },
+//     });
+//     if (response.ok) {
+//         document.location.replace('/dashboard');
+//     } else {
+//         alert('Failed to upload document');
+//     }
+//   }
+// }
+
+
+//sends user document info to the AWS bucket
+const AWSupload = async (event) => {
+event.preventDefault();
+
+const fileInput = document.getElementById('file-input');
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    try {
+      const response = await fetch('/api/uploads/upload', {
         method: 'POST',
-        body: JSON.stringify({ question_text, career_field }),
-        headers: { 'Content-Type': 'application/json' },
-    });
-    if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert('Failed to upload document');
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        alert('File uploaded successfully');
+      } else {
+        alert('Error uploading file');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error uploading file');
     }
-  }
 }
+
+
 
 document.querySelector('#file-upload-form').addEventListener('submit', newDocumentFormHandler);
 document.querySelector('#question-upload-form').addEventListener('submit', newQuestionFormHandler);
+document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);

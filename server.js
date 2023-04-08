@@ -5,8 +5,6 @@ const routes = require('./controllers')
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const helpers = require('./util/helpers');
-const { S3 } = require('aws-sdk');
-const uuid = require('uuid').v4;
 const multer = require('multer');
 
 const sequelize = require('./config/connection');
@@ -16,7 +14,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers })
-
 
 const sess = {
     secret: 'Super secret secret',
