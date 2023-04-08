@@ -1,34 +1,51 @@
+{{#if errorMessage}}
+<div class="mx-auto w-1/2 p-3" id="errorMessageAlert">
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold">Failed Login!</strong>
+    <span class="block sm:inline">Incorrect username or password</span>
+    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+      <button id="closeButton" class="fill-current h-6 w-6 text-red-500" role="button">X</button>
+    </span>
+  </div>
+</div>
+
+{{else}}
+
+{{/if}}
 <div class="row">
   <div class="col-md-6">
-<div class="min-h-screen bg-sky-970 flex flex-col justify-center sm:py-12">
-  <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-    <h1 class="font-bold text-center text-2xl mb-5">Login Here</h1>
-    <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
-      <div class="px-5 py-7">
-        <form action="api/users/login" method="POST">
-          <label class="font-semibold text-sm text-gray-600 pb-1 block">Email</label>
-          <input name="email" type="email" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" placeholder="Email" required>
-          <label class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
-          <input name="password" type="password" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" placeholder="Password" required>
-          <button type="submit" class="transition duration-200 bg-violet-950 hover:bg-purple-600 focus:bg-violet-700 focus:shadow-sm focus:outline-none text-white font-semibold rounded-lg px-4 py-2 block w-full">
-            Login
-          </button>
-        </form>
-      </div>
-      <div class="py-5">
-        <div class="grid grid-cols-2 gap-1">
-          <div class="text-center sm:text-left whitespace-nowrap">
-        
+    <div class="min-h-screen bg-sky-970 flex flex-col justify-center sm:py-12">
+      <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+        <h1 class="font-bold text-center text-2xl mb-5">Login Here</h1>
+        <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+          <div class="px-5 py-7">
+            <form action="api/users/login" method="POST">
+              <label class="font-semibold text-sm text-gray-600 pb-1 block">Email</label>
+              <input name="email" type="email" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+                placeholder="Email" required>
+              <label class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+              <input name="password" type="password" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+                placeholder="Password" required>
+              <button type="submit"
+                class="transition duration-200 bg-violet-950 hover:bg-purple-600 focus:bg-violet-700 focus:shadow-sm focus:outline-none text-white font-semibold rounded-lg px-4 py-2 block w-full">
+                Login
+              </button>
+            </form>
           </div>
-          <div class="text-center sm:text-right whitespace-nowrap">
-            <a href="/create" class="text-blue-500 hover:text-blue-700 font-semibold">
-              Create an account
-            </a>
+          <div class="py-5">
+            <div class="grid grid-cols-2 gap-1">
+              <div class="text-center sm:text-left whitespace-nowrap">
+
+              </div>
+              <div class="text-center sm:text-right whitespace-nowrap">
+                <a href="/create" class="text-blue-500 hover:text-blue-700 font-semibold">
+                  Create an account
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script src="./js/login.js"></script>
+    

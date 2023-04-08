@@ -1,9 +1,14 @@
-<section class="w-full h-screen bg-cover bg-center bg-no-repeat"
-        style="background-image: url('https://source.unsplash.com/random');">
-        <div class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-            <h1 class="text-4xl md:text-6xl text-white font-bold text-center">
-                Welcome to ProjectPerfect
-            </h1>
-        </div>
-</section>
+{{#if logged_in}}
+<p>Login success</p>
+{{else}}
 
+{{/if}}
+
+<section class="w-full h-screen bg-cover bg-center bg-no-repeat"
+    style="background-image: url('https://source.unsplash.com/random');">
+    <div class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+        <h1 class="text-4xl md:text-6xl text-white font-bold text-center">
+            Welcome to ProjectPerfect
+        </h1>
+    </div>
+</section>

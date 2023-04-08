@@ -25,23 +25,26 @@ router.post('/login', async (req, res) => {
         })
 
         if (!userData) {
-            res.status(400).json({ message: 'Incorrect email or password, please try again' });
+            req.session.errorMessage = 'Incorrect email or password, please try again'
+            res.redirect('/login')
             return;
         }
 
         const correctPassword = userData.checkPassword(req.body.password);
 
         if (!correctPassword) {
-            res.status(400).json({ message: 'Incorrect email or password, please try again'})
+            req.session.errorMessage = 'Incorrect email or password, please try again'
+            res.redirect('/login')
+            return;
         }
 
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-            res.redirect('/')
-        })
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+        res.redirect('/')
+
     } catch (err) {
-        res.status(500).json(err)
+        req.session.errorMessage = err.message;
+        res.redirect('/login')
     }
 });
 
@@ -60,12 +63,15 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
-    } else {
-        res.status(404).end()
+    try {
+        if (req.session.logged_in) {
+            req.session.destroy();
+            res.redirect('/')
+        } else {
+            res.status(404).end()
+        }
+    } catch (err) {
+        res.status(500).json(err)
     }
 });
 
