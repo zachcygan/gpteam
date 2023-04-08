@@ -24,11 +24,11 @@ const newQuestionFormHandler = async (event) =>{
 
 const newDocumentFormHandler = async (event) =>{
     event.preventDefault();
-    const question_text = document.getElementById('post-name').value.trim();
-    const career_field = document.getElementById('post-body').value.trim();
+    const bucket_link = `https://gpteam-upload-bucket.s3.amazonaws.com/upload/${filename}`
+    const career_field = document.getElementById('file-industry').value.trim();
    
-    if (question_text && career_field){
-    const response = await fetch(`/api/post`, {
+    if (bucket_link && career_field){
+    const response = await fetch(`/api/document`, {
         method: 'POST',
         body: JSON.stringify({ question_text, career_field }),
         headers: { 'Content-Type': 'application/json' },

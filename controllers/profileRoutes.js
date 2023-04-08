@@ -28,9 +28,6 @@ router.get('/', async (req, res) => {
     //     const documents = documentData.map((document) => document.get({plain:true}));
     //     const questions = questionData.map((question) => question.get({plain:true}));
         res.render('profile', {
-            // documents,
-            // questions,
-            // logged_in: req.session.logged_in
     })
 }catch (err) {
     res.status(500).json(err)

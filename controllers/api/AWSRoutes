@@ -1,0 +1,84 @@
+const { S3 } = require('aws-sdk');
+const uuid = require('uuid').v4;
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const multer = require('multer');
+require('dotenv').config();
+const router = require('express').Router();
+
+
+const s3Uploadv3 = async (files) => {
+    const s3client = new S3Client();
+
+    const params = files.map((file) => {
+        return {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: `uploads/${uuid()}-${file.originalname}`,
+            Body: file.buffer,
+        };
+    });
+
+    return await Promise.all(
+        params.map((param) => s3client.send(new PutObjectCommand(param)))
+    );
+};
+
+exports.s3Uploadv2 = async (file) => {
+    const s3 = new S3()
+
+    const param = {
+        Bucket: process.env.AWS_BUCKET.NAME,
+        Key: `uploads/${uuid()}-${file.originalname}`,
+        Body: file.buffer
+    }
+    const result = await s3.upload(param).promise();
+    return result;
+}
+
+//these are multer middleware for aws storage
+const storage = multer.memoryStorage();
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.split("/")[0] === 'image') {
+        cb(null, true);
+    } else {
+        cb(new Error("File is not the correct format", false));
+    }
+}
+const upload = multer({
+    storage,
+    // fileFilter,
+    limits: { fileSize: 1000000000, files: 2 },
+});
+
+router.post("/upload", upload.array("file"), async (req, res) => {
+    try {
+        const results = await s3Uploadv3(req.files);
+        console.log(results);
+        return res.json({ status: "success" });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.use((error, req, res, next) => {
+    if (error instanceof multer.MulterError) {
+        if (error.code === "LIMIT_FILE_SIZE") {
+            return res.status(400).json({
+                message: "file is too large",
+            });
+        }
+
+        if (error.code === "LIMIT_FILE_COUNT") {
+            return res.status(400).json({
+                message: "File limit reached",
+            });
+        }
+
+        if (error.code === "LIMIT_UNEXPECTED_FILE") {
+            return res.status(400).json({
+                message: "File must be an image",
+            });
+        }
+    }
+});
+
+module.exports = router;
