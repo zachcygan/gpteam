@@ -5,6 +5,7 @@ const routes = require('./controllers')
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const helpers = require('./util/helpers');
+const multer = require('multer');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -14,11 +15,10 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers })
 
-
 const sess = {
     secret: 'Super secret secret',
     cookie: {
-        maxAge: 60000 * 60
+        maxAge: 60000 * 60 
     },
     resave: false,
     saveUninitialized: true,

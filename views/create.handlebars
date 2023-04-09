@@ -1,0 +1,25 @@
+<div class="min-h-screen bg-sky-970 flex flex-col justify-center sm:py-12">
+  <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+    <h1 class="font-bold text-center text-2xl mb-5">Create Your Account</h1>
+    <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+      <div class="px-5 py-7">
+        <form action="api/users/register" method="POST">
+          <label class="font-semibold text-sm text-gray-500 pb-1 block">Username</label>
+          <input name="name" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" placeholder="Username" required>
+          <label class="font-semibold text-sm text-gray-600 pb-1 block">Email</label>
+          <input name="email" type="email" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" placeholder="Email" required>
+          <label class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+          <input name="password" type="password" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" placeholder="Password" required>
+          <a href="/login" id="passwordHelp">Already have an account? Login instead</a>
+          <button type="submit" class="transition duration-200 bg-violet-950 hover:bg-purple-600 focus:bg-violet-700 focus:shadow-sm focus:outline-none text-white font-semibold rounded-lg px-4 py-2 block w-full">
+            Create
+          </button>
+        </form>
+      </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

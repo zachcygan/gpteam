@@ -1,3 +1,11 @@
+:root {
+    --color-one: #808D8E;
+    --color-two: #947EB0;
+    --color-three: #A3A5C3;
+    --color-four: #2B303A;
+    --color-five: #A9D2D5;
+  }
+
 .chat-bubble {
     max-width: 80%;
     word-wrap: break-word;
@@ -130,4 +138,43 @@ justify-content: center;
 margin-left: 850px;
 font-size: 40px;
 color: #e2e8f0;
+}
+
+.bg-color-one{
+    background-color: var(--color-one);
+}
+
+.table-container{
+    display: flex;    
+}
+.table-single{
+    margin: 10px 30px 10px 30px;
+}
+.table-title{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    text-decoration: underline;
+}
+#file-upload-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-post-title{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    text-decoration: underline;
+}
+#question-upload-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-form{
+    display: flex;
+    flex-wrap: wrap;
 }

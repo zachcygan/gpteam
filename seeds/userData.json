@@ -1,0 +1,53 @@
+[
+    {
+      "name": "User1",
+      "email": "user1@hotmail.com",
+      "password": "passworduser1"
+    },
+    {
+      "name": "User2",
+      "email": "user2@hotmail.com",
+      "password": "passworduser2"
+    },
+    {
+      "name": "User3",
+      "email": "user3@hotmail.com",
+      "password": "passworduser3"
+    },
+    {
+      "name": "User4",
+      "email": "user4@hotmail.com",
+      "password": "passworduser4"
+    },
+    {
+      "name": "User5",
+      "email": "user5@hotmail.com",
+      "password": "passworduser5"
+    },
+    {
+      "name": "User6",
+      "email": "user6@hotmail.com",
+      "password": "passworduser6"
+    },
+    {
+      "name": "User7",
+      "email": "user7@hotmail.com",
+      "password": "passworduser7"
+    },
+    {
+      "name": "User8",
+      "email": "user8@hotmail.com",
+      "password": "passworduser8"
+    },
+    {
+      "name": "User9",
+      "email": "user9@hotmail.com",
+      "password": "passworduser9"
+    },
+    {
+      "name": "User10",
+      "email": "user10@hotmail.com",
+      "password": "passworduser10"
+    }
+  ]
+  

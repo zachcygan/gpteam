@@ -10,22 +10,76 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/output.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
 </head>
 
 <body class="antialiased font-sans bg-gray-100">
-  <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-75">
-    <div class="container mx-auto px-4 py-2 flex items-center justify-between">
-      <a href="#" class="font-semibold text-xl text-indigo-600">ProjectPerfect</a>
-      <button class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-md">Login</button>
+   <div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/post">Posts</a></li>
+        <li><a href="/profile">Profile</a></li>
+      </ul>
     </div>
-  </header>
+  </div>
+  <div class="navbar-center">
+    <a class="btn btn-ghost normal-case text-xl" href="/">GPTeam Job</a>
+  </div>
+  <div class="navbar-end">
+    {{!-- <button class="btn btn-ghost btn-circle">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+    </button> --}}
+    {{#if logged_in}}
+    <button class="btn btn-ghost btn-circle" id="log">Logout</button>
+    {{else}}
+    <button class="btn btn-ghost btn-circle" id="log">
+      <a href="/login">Login</a>
+    </button>
+    {{/if}}
+    <button class="btn btn-ghost btn-circle">
+      <div class="indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+        <span class="badge badge-xs badge-primary indicator-item"></span>
+      </div>
+    </button>
+  </div>
+</div>
 
+<button id="chatButton" class="fixed bottom-8 right-8 bg-indigo-600 text-white font-semibold px-6 py-2 rounded-full shadow-md z-50">
+        Chat
+</button>
+
+<div id="chatWindow" class="hidden resize fixed bottom-0 right-0 mb-20 mr-8 w-80 h-96 rounded-lg shadow-xl z-50 bg-white">
+        <div
+            class="h-14 px-4 py-2 bg-indigo-600 text-white font-semibold flex items-center justify-between rounded-t-lg">
+            Chat with our Bot
+            <button id="resetBot" class="text-white">reset</button>
+            <button id="closeChat" class="text-white">&times;</button>
+        </div>
+        <div id="chatMessages" class="overflow-x-hidden overflow-y-scroll p-4 flex flex-col h-72"></div>
+
+        <progress class="progress w-full hidden" id="botResponding"></progress>
+
+        <form id="chatForm" class="p-4 border-t border-gray-200">
+            <input id="chatInput" type="text"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="Type your message here...">
+        </form>
+</div>
+
+<div>
   {{{ body }}}
+</div>
+  
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.js"></script>
-    <script src="/js/chatBot.js"></script>
+  <script src="/js/chatBot.js"></script>
+  <script src="/js/logout.js"></script>
+  <script src="/js/login.js"></script>
 </body>
 
 </html>
