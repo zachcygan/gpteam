@@ -33,7 +33,7 @@ const s3Uploadv3 = async (files) => {
 //these are multer middleware for aws storage
 const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype.split("/")[0] === 'image' || file.mimetype.split("/")[0] === 'application') {
+    if (file.mimetype.split("/")[0] === 'application') {
         cb(null, true);
     } else {
         cb(new Error("File is not the correct format", false));
