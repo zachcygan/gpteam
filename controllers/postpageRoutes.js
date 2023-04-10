@@ -1,29 +1,50 @@
-   const router = require('express').Router();
-   const { User, Document, Question, Comment } = require('../models');
-   const withAuth = require('../util/auth');
+const router = require('express').Router();
+const { User, Document, Question, Comment } = require('../models');
+const withAuth = require('../util/auth');
 
-   router.get('/', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const documentData = await Document.findAll({
-            include: [ 
+            include: [
                 {
-                    model: User, Question, Comment,
-                    attributes: ['name', 'question_text', 'comment_text'],
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
                 },
             ],
         });
-        const documents = documentData.map((document) => document.get({ plain: true}));
+        const documents = documentData.map((document) => document.get({ plain: true }));
 
-        res.render('homepage', {
+        const questionData = await Question.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
+                },
+            ],
+        });
+
+        const questions = questionData.map((document) => document.get({ plain: true }));
+
+
+        res.render('postpage', {
             documents,
+            questions,
             logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
     }
-   });
+});
 
-   router.get('/post/:id', async (req, res) => {
+router.get('/document/:id', async (req, res) => {
     try {
         const documentData = await Document.findByPk(req.param.id, {
             include: [
@@ -33,7 +54,7 @@
                 },
             ],
         });
-        const document = documentData.get({ plain: true});
+        const document = documentData.get({ plain: true });
 
         res.render('document', {
             ...document,
@@ -42,23 +63,51 @@
     } catch (err) {
         res.status(500).json(err);
     }
-   });
+});
 
-router.get('/post', withAuth,async (req, res) => {
+router.get('/question/:id', async (req, res) => {
+    try {
+        const questionData = await Question.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
+                },
+            ],
+        });
+        const question = questionData.get({ plain: true });
+
+        res.render('individual', {
+            ...question,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/user', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Document }],
-    });
-    const user = userData.get({ plain: true });
+            include: [
+                { model: Document },
+                {model: Question}
+            ],
+        });
+        const user = userData.get({ plain: true });
 
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+        res.render('profile', {
+            ...user,
+            logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.get('/login', (req, res) => {
@@ -72,38 +121,38 @@ router.get('/login', (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
     try {
-      const newDocument = await Document.create({
-        ...req.body,
-        user_id: req.session.user_id,
-      });
-  
-      res.status(200).json(newDocument);
+        const newDocument = await Document.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
+
+        res.status(200).json(newDocument);
     } catch (err) {
-      res.status(400).json(err);
+        res.status(400).json(err);
     }
 });
 
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-      const documentData = await Document.destroy({
-        where: {
-          id: req.params.id,
-          user_id: req.session.user_id,
-        },
-      });
-  
-      if (!documentData) {
-        res.status(404).json({ message: 'No post found with this id!' });
-        return;
-      }
-  
-      res.status(200).json(documentData);
+        const documentData = await Document.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+
+        if (!documentData) {
+            res.status(404).json({ message: 'No post found with this id!' });
+            return;
+        }
+
+        res.status(200).json(documentData);
     } catch (err) {
-      res.status(500).json(err);
+        res.status(500).json(err);
     }
-  });
-    
+});
+
 
 module.exports = router;
 
