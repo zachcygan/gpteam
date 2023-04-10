@@ -50,9 +50,11 @@ const career_field = document.getElementById('file-industry').value.trim();
 
 const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
+    const text = document.getElementById('document-text-input').value.trim();
     const formData = new FormData();
     formData.append('file', file);
     formData.append('career_field', career_field);
+    formData.append('text', text);
   
     try {
       const response = await fetch('/api/uploads/upload', {
