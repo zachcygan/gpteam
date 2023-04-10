@@ -33,7 +33,7 @@ const s3Uploadv3 = async (files) => {
 //these are multer middleware for aws storage
 const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype.split("/")[0] === 'image') {
+    if (file.mimetype.split("/")[0] === 'application') {
         cb(null, true);
     } else {
         cb(new Error("File is not the correct format", false));
@@ -41,8 +41,8 @@ const fileFilter = (req, file, cb) => {
 }
 const upload = multer({
     storage,
-    // fileFilter,
-    limits: { files: 2 },
+    fileFilter,
+    limits: { fileSize: 10000000000, files: 2 },
 });
 
 router.post("/upload", upload.array("file"), async (req, res) => {
@@ -54,6 +54,7 @@ router.post("/upload", upload.array("file"), async (req, res) => {
         const document = await Document.create({
             bucket_link: s3BucketURL + results[0].Key, // Assuming you're uploading a single file
             career_field: req.body.career_field,
+            text: req.body.text,
             user_id: req.session.user_id
         })
 
