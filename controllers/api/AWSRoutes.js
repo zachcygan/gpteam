@@ -54,6 +54,7 @@ router.post("/upload", upload.array("file"), async (req, res) => {
         const document = await Document.create({
             bucket_link: s3BucketURL + results[0].Key, // Assuming you're uploading a single file
             career_field: req.body.career_field,
+            text: req.body.text,
             user_id: req.session.user_id
         })
 
