@@ -25,9 +25,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 50%;
-    margin-left: 450px;
+   
 }
 
 .photo-frame img {
@@ -177,4 +177,26 @@ color: #e2e8f0;
 .upload-form{
     display: flex;
     flex-wrap: wrap;
+}
+
+.avatar {
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+.comment-section {
+   width: 50%;
+   position: absolute;
+   top: 180px;
+   right: 0;
+}
+
+.post-container {
+   color: #4f46e5;
+   position: relative;
+   right: 800px;
+}
+ 
+.comment-bubbles {
+    margin-bottom: 10px;
 }
