@@ -1987,6 +1987,13 @@ html {
   flex-grow: 1;
 }
 
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
 .card figure {
   display: flex;
   align-items: center;
@@ -5184,6 +5191,10 @@ html {
   width: 50%;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -5198,6 +5209,10 @@ html {
 
 .w-80 {
   width: 20rem;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .w-full {
@@ -5252,6 +5267,10 @@ html {
 
 .items-center {
   align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
