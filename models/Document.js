@@ -15,6 +15,9 @@ Document.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        text:{
+            type:DataTypes.TEXT,
+        },
         date_uploaded: {
             type: DataTypes.DATE,
             allowNull: false,
