@@ -35,12 +35,7 @@ router.get('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        await Comment.destroy({
-            where: {
-                question_id: req.params.id
-            }
-        });
-
+    
         const postData = await Question.destroy({
             where: {
                 id: req.params.id,

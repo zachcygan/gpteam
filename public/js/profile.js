@@ -22,32 +22,13 @@ const newQuestionFormHandler = async (event) =>{
   }
 }
 
-//document information to send to DB
-// const newDocumentFormHandler = async (event) =>{
-//     event.preventDefault();
-//     const bucket_link = `https://gpteam-upload-bucket.s3.amazonaws.com/upload/${filename}`
-//     const career_field = document.getElementById('file-industry').value.trim();
-   
-//     if (bucket_link && career_field){
-//     const response = await fetch(`/api/document`, {
-//         method: 'POST',
-//         body: JSON.stringify({ question_text, career_field }),
-//         headers: { 'Content-Type': 'application/json' },
-//     });
-//     if (response.ok) {
-//         document.location.replace('/dashboard');
-//     } else {
-//         alert('Failed to upload document');
-//     }
-//   }
-// }
-
 
 //sends user document info to the AWS bucket
 const AWSupload = async (event) => {
 event.preventDefault();
 const career_field = document.getElementById('file-industry').value.trim();
 
+//creating the req body for document post
 const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     const text = document.getElementById('document-text-input').value.trim();
@@ -65,7 +46,8 @@ const fileInput = document.getElementById('file-input');
       if (response.ok) {
         const result = await response.json();
         console.log(result);
-        alert('File uploaded successfully');
+        //if the reponse from the route is ok, reloads the profile page
+        document.location.replace('/profile');
       } else {
         alert('Error uploading file');
       }
@@ -75,8 +57,45 @@ const fileInput = document.getElementById('file-input');
     }
 }
 
+const deleteDocumentHandler = async (event) => {
+  event.preventDefault();
+  const id = event.target.dataset.id;
+  console.log(id);
+
+  if(id){
+const response = await fetch(`/api/document/${id}`, {
+    method: 'DELETE'
+});
+if (response.ok) {
+    //if the reponse from the route is ok, reloads the profile page
+    document.location.replace('/profile');
+} else {
+    return;
+}
+}
+}
+
+const deleteQuestionHandler = async (event) => {
+  event.preventDefault();
+  const id = event.target.dataset.id;
+  console.log(id);
+
+  //will only fire the event if the button with the data-id attribute is clicked, instead of somewhere else in the table
+if(id){
+const response = await fetch(`/api/post/${id}`, {
+    method: 'DELETE'
+});
+if (response.ok) {
+    //if the reponse from the route is ok, reloads the profile page
+    document.location.replace('/profile');
+} else {
+    return;
+}
+  }
+}
 
 
-// document.querySelector('#file-upload-form').addEventListener('submit', newDocumentFormHandler);
+document.querySelector('#question-table').addEventListener('click', deleteQuestionHandler);
+document.querySelector('#document-table').addEventListener('click', deleteDocumentHandler);
 document.querySelector('#question-upload-form').addEventListener('submit', newQuestionFormHandler);
 document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);
