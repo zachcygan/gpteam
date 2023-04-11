@@ -16,6 +16,14 @@
 body {
     background-color: #2b303a;
 }
+
+.card{
+    background-color: #808D8E;
+    color: #fff;
+    margin: 3%;
+    width: 48em;
+
+}
 .photo-frame {
     background-color: #fff;
     padding: 10px;
