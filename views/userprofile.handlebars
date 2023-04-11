@@ -1,40 +1,40 @@
-   <div class="profile-page">
-   
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex flex-col items-center justify-center mt-16">
-    <div class="w-full lg:w-4/5 rounded-lg shadow-lg bg-white">
-      <div class="flex flex-col md:flex-row">
-        <div class="md:w-1/3 p-4 flex justify-center items-center">
-          <img class="h-32 w-32 object-cover rounded-full border-4 border-gray-300" src="https://randomuser.me/api/portraits/women/17.jpg">
-        </div>
-        <div class="md:w-2/3 p-4">
-          <div class="flex flex-row items-center justify-between">
-            <h2 class="text-2xl font-bold items-center text-gray-800">{{user.name}}</h2>
+<div class="profile-page">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center justify-center mt-16">
+      <div class="w-full lg:w-4/5 rounded-lg shadow-lg bg-white">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3 p-4 flex justify-center items-center">
+            <img class="h-32 w-32 object-cover rounded-full border-4 border-gray-300"
+              src="/assets/images/{{user.avatar_link}}">
           </div>
-          <p class="text-gray-700 mt-4"> Hi my name is jane i am a buisness major from NY and love a good walk on the beach with a massive slice of pizza. </p>
+          <div class="md:w-2/3 p-4">
+            <div class="flex flex-row items-center justify-between">
+              <h2 class="text-2xl font-bold items-center text-gray-800">{{user.name}}</h2>
+            </div>
+            <p class="text-gray-700 mt-4"> {{user.bio}} </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <section  class="profile-posts">
-<div class="profile-posts text-3xl font-bold items-center text-gray-500"> My Posts </div>
 
- {{#each questions as |question|}}
+  <section class="profile-posts">
+    <div class="profile-posts text-3xl font-bold items-center text-gray-500"> My Posts </div>
 
-<div class="card card-compact bg-base-100 shadow-xl">
-  <div class="card-body">
-        <div class="w-10 rounded-full">
-      <img src="https://picsum.photos/id/237/600/600" />
+    {{#each documents as |document|}}
+
+    <div class="card card-compact w-120 bg-base-100 shadow-xl">
+      <div class="card-body">
+
+        <h2 class="card-title">{{post_title}}</h2>
+        <p>{{text}}</p>
+        <div class="card-actions justify-end">
+          <a href='/post/question/{{id}}'>
+            <button class="btn btn-primary"> View Post </button>
+          </a>
+        </div>
+      </div>
     </div>
-    <h2 class="card-title">By {{user.name}}:</h2>
-    <p>{{question_text}}</p>
-    <div class="card-actions justify-end">
-     <a href='/post/question/{{id}}'> 
-      <button class="btn btn-primary"> View Post </button>
-    </a>
-    </div>
-  </div>
-</div>
 
-{{/each}}
+    {{/each}}

@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const helpers = require('./util/helpers');
 const multer = require('multer');
+const attachData = require('./middleware/attachData')
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -35,7 +36,7 @@ app.set('view engine', 'handlebars')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(attachData)
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

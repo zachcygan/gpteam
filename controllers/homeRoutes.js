@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
 
     res.render('homepage', {
-      logged_in: req.session.logged_in
+      
     })
   } catch (err) {
     res.status(500).json(err)
@@ -18,15 +18,15 @@ router.get('/', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ['password'], include: ['bio'] },
       include: [{ model: Document }, { model: Question }]
     })
 
     const user = userData.get({ plain: true })
 
     res.render('profile', {
-      ...user,
-      logged_in: true
+      user,
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err)

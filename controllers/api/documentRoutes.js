@@ -14,9 +14,11 @@ router.post('/', async (req, res) => {
     }
 });
 
+
 router.delete('/:id', async (req, res) => {
     try { 
         const docData = await Document.destroy({
+            //deletes the "document" from the database with the associated id (documents are now documents and text posts combined)
             where: {
                 id: req.params.id
             },

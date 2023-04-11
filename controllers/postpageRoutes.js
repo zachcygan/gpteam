@@ -8,13 +8,16 @@ router.get('/', withAuth, async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['name', 'avatar_link'],
                 },
                 {
                     model: Comment,
                     attributes: ['comment_text'],
                 },
             ],
+            order: [[
+                'date_uploaded', 'DESC'
+            ]]
         });
         const documents = documentData.map((document) => document.get({ plain: true }));
 
@@ -37,7 +40,7 @@ router.get('/', withAuth, async (req, res) => {
         res.render('postpage', {
             documents,
             questions,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -98,7 +101,7 @@ router.get('/user', withAuth, async (req, res) => {
             attributes: { exclude: ['password'] },
             include: [
                 { model: Document },
-                {model: Question}
+                { model: Question }
             ],
         });
         const user = userData.get({ plain: true });
