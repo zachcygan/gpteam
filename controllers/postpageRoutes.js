@@ -8,18 +8,35 @@ router.get('/', withAuth, async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['id', 'name'],
+                    attributes: ['name'],
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text', 'date_created'],
+                    attributes: ['comment_text'],
                 },
             ],
         });
         const documents = documentData.map((document) => document.get({ plain: true }));
 
+        const questionData = await Question.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
+                },
+            ],
+        });
+
+        const questions = questionData.map((document) => document.get({ plain: true }));
+
+
         res.render('postpage', {
             documents,
+            questions,
             logged_in: req.session.logged_in
         });
     } catch (err) {
@@ -39,7 +56,7 @@ router.get('/document/:id', async (req, res) => {
         });
         const document = documentData.get({ plain: true });
 
-        res.render('individual', {
+        res.render('document', {
             ...document,
             logged_in: req.session.logged_in
         });
@@ -80,7 +97,8 @@ router.get('/user', withAuth, async (req, res) => {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
             include: [
-                { model: Document }
+                { model: Document },
+                {model: Question}
             ],
         });
         const user = userData.get({ plain: true });
