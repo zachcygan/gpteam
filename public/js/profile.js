@@ -29,7 +29,7 @@ event.preventDefault();
         const result = await response.json();
         console.log(result);
         //if the reponse from the route is ok, reloads the profile page
-        // document.location.replace('/profile');
+        document.location.replace('/profile');
       } else {
         alert('Error uploading file');
       }

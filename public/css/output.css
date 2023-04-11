@@ -5320,13 +5320,10 @@ html {
   width: 15rem;
 }
 
-<<<<<<< HEAD
-=======
 .w-8 {
   width: 2rem;
 }
 
->>>>>>> 132ea5076ff4948063ea8d51fb66943df1581045
 .w-80 {
   width: 20rem;
 }
@@ -5640,14 +5637,11 @@ html {
   fill: currentColor;
 }
 
-<<<<<<< HEAD
-=======
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
 }
 
->>>>>>> 132ea5076ff4948063ea8d51fb66943df1581045
 .object-none {
   -o-object-fit: none;
      object-fit: none;
@@ -6020,8 +6014,6 @@ html {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-<<<<<<< HEAD
-=======
 .ring-1 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -6033,19 +6025,15 @@ html {
   --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
 }
 
->>>>>>> 132ea5076ff4948063ea8d51fb66943df1581045
 .ring-primary {
   --tw-ring-opacity: 1;
   --tw-ring-color: hsl(var(--p) / var(--tw-ring-opacity));
 }
 
-<<<<<<< HEAD
-=======
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
 }
 
->>>>>>> 132ea5076ff4948063ea8d51fb66943df1581045
 .ring-offset-2 {
   --tw-ring-offset-width: 2px;
 }
@@ -6121,14 +6109,11 @@ html {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
-<<<<<<< HEAD
-=======
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
->>>>>>> 132ea5076ff4948063ea8d51fb66943df1581045
 .focus\:border-blue-300:focus {
   --tw-border-opacity: 1;
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
