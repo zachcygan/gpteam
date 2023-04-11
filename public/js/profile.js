@@ -54,7 +54,7 @@ if (response.ok) {
     //if the reponse from the route is ok, reloads the profile page
     document.location.replace('/profile');
 } else {
-  document.location.replace('/profile');
+  document.location.replace(`/post/question/${id}`);
     return;
 }
 }
