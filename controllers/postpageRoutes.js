@@ -69,6 +69,23 @@ router.get('/document/:id', async (req, res) => {
     }
 });
 
+router.get('/question/:id', async (req, res) => {
+    try {
+        const questionData = await Question.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
+                },
+            ],
+        });
+        const question = questionData.get({ plain: true });
+
+        console.log(question);
 
 
 router.get('/user', withAuth, async (req, res) => {
@@ -132,6 +149,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 
 module.exports = router;
