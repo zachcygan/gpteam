@@ -28,13 +28,15 @@ const AWSupload = async (event) => {
             const result = await response.json();
             console.log(result);
             //if the reponse from the route is ok, reloads the profile page
-            document.location.replace('/profile');
+            document.location.replace('/post');
           } else {
             alert('Error uploading file');
           }
         } catch (error) {
           console.error(error);
           alert('Error uploading file');
-          document.location.replace('/profile');
+          document.location.replace('/post');
         }
     }
+
+    document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);
