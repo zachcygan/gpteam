@@ -3,10 +3,10 @@
 {{/each}}
 {{#each questions as |question|}}
 
-<div class="card card-compact w-60 bg-base-100 shadow-xl">
+<div class="card card-compact bg-base-100 shadow-xl">
   <div class="card-body">
         <div class="w-10 rounded-full">
-      <img src="https://picsum.photos/id/237/600/600" />
+      <a href='/profile/user/{{user_id}}'><img src="https://picsum.photos/id/237/600/600"></a>
     </div>
     <h2 class="card-title">By {{user.name}}:</h2>
     <p>{{question_text}}</p>
