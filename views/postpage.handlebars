@@ -1,8 +1,10 @@
-<div>
-        <h2 class="new-post-title">Create New Document Post</h2>
+<div class="profile-page">
+    <div>
+        <h2 class="new-post-title">Create New Post</h2>
         
         <form id="file-upload-form" class="upload-form">
-            <input id="document-text-input" type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" />
+            <input id="document-title" type="text" placeholder="Post Title" class="input input-bordered input-info w-full max-w-xs" />
+            <input id="document-text-input" type="text" placeholder="Post Text" class="input input-bordered input-info w-full max-w-xs" />
             <input id="file-input"type="file" class="file-input file-input-bordered file-input-info w-full max-w-xs" />
                 <select id="file-industry" class="select select-primary w-full max-w-xs">
                     <option disabled selected>Select Industry</option>
@@ -28,7 +30,6 @@
             <input type="submit" value="Submit" class="btn" />
         </form>
     </div>  
-
 
 {{#each documents as |document|}}
 

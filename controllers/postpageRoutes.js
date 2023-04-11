@@ -8,11 +8,11 @@ router.get('/', withAuth, async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['id', 'name'],
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text'],
+                    attributes: ['comment_text', 'data_created', 'date_created'],
                 },
             ],
         });
@@ -22,11 +22,11 @@ router.get('/', withAuth, async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['id', 'name'],
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text'],
+                    attributes: ['comment_text', 'data_created', 'date_created'],
                 },
             ],
         });
@@ -50,11 +50,11 @@ router.get('/document/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['id', 'name'],
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text'],
+                    attributes: ['comment_text', 'data_created', 'date_created'],
                 },
             ],
         });
