@@ -41,7 +41,9 @@ router.post('/login', async (req, res) => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
         req.session.avatar_link = userData.avatar_link;
+        console.log("SESSION: " + req.session.logged_in)
         res.redirect('/')
+        
 
     } catch (err) {
         req.session.errorMessage = err.message;
