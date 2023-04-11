@@ -40,6 +40,7 @@ router.post('/login', async (req, res) => {
 
         req.session.user_id = userData.id;
         req.session.logged_in = true;
+        req.session.avatar_link = userData.avatar_link;
         res.redirect('/')
 
     } catch (err) {

@@ -35,13 +35,31 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user/:id', withAuth, async (req, res) => {
-    try{
+    try {
+        const userData = await User.findByPk(req.params.id, {
+            attributes: { exclude: ['password'] },
+            include: [
+                { model: Document },
+                { model: Question }
+            ],
+        });
 
-        res.render('userprofile')
-}catch (err) {
-    res.status(500).json(err)
-}
+        if (!userData) {
+            res.status(404).json({ message: 'No user found with this id!' });
+            return;
+        }
+
+        const user = userData.get({ plain: true });
+
+        res.render('userprofile', {
+            user,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
+
 
 
 module.exports = router; 
