@@ -33,6 +33,10 @@ User.init(
     avatar_link: {
       type: DataTypes.STRING,
     },
+    bio: {
+      type: DataTypes.STRING,
+      defaultValue: 'Click me to update your profile bio'
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

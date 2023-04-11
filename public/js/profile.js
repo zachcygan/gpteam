@@ -61,5 +61,28 @@ if (response.ok) {
 }
 
 
+const bio = document.getElementById('bio');
+const updateButton = document.getElementById('updateButton');
+
+let originalBio = bio.textContent;
+console.log(originalBio)
+
+bio.addEventListener('change', (event) => {
+  updateButton.classList.remove('hidden')
+})
+
+updateButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  
+})
+
+// setInterval(function() {
+//   if (bio.textContent !== originalBio) {
+//     updateButton.classList.remove('hidden')
+//     console.log('changed')
+//   }
+// })
+
 document.querySelector('#document-table').addEventListener('click', deleteDocumentHandler);
 document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);
