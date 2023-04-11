@@ -2,14 +2,17 @@
 <h2>Hello</h2>
 {{/each}}
 {{#each questions as |question|}}
-<div class="card card-compact w-96 bg-base-100 shadow-xl">
-  <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+
+<div class="card card-compact w-60 bg-base-100 shadow-xl">
   <div class="card-body">
+        <div class="w-10 rounded-full">
+      <img src="https://picsum.photos/id/237/600/600" />
+    </div>
     <h2 class="card-title">By {{user.name}}:</h2>
     <p>{{question_text}}</p>
     <div class="card-actions justify-end">
      <a href='/post/question/{{id}}'> 
-      <button class="btn btn-primary" >Buy Now</button>
+      <button class="btn btn-primary"> View Post </button>
     </a>
     </div>
   </div>

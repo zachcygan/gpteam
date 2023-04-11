@@ -15,17 +15,10 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    try {
-        await Comment.destroy({
-            where: {
-                document_id: req.params.id 
-            }
-        });
-
+    try { 
         const docData = await Document.destroy({
             where: {
-                id: req.params.id,
-                user_id: res.session.user_id
+                id: req.params.id
             },
         });
 

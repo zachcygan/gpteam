@@ -61,7 +61,7 @@
     <div class="table-grid">
         <div class="overflow-x-auto table-single">
         <h2 class="table-title">Uploaded Documents</h2>
-        <table class="table w-full">
+        <table id="document-table" class="table w-full">
             <!-- head -->
             <thead>
             <tr>
@@ -72,20 +72,22 @@
             </tr>
             </thead>
             <tbody>
-                 {{!-- {{#each documents as |document|}}
+                 {{#each documents as |document|}}
             <tr>
-                <th>{{documents.length[i]}}</th>
+                <th>
+                    <button data-id = "{{id}}" type="button" class="btn btn-default btn-sm"> Delete </button>
+                </th>
                 <td>{{id}}</td>
                 <td>{{career_field}}</td>
                 <td>{{date_uploaded}}</td>
                 {{/each}}
-            </tr> --}}
+            </tr>
             </tbody>
         </table>
         </div>
         <div class="overflow-x-auto table-single">
         <h2 class="table-title">Other Posts</h2>
-        <table class="table w-full">
+        <table id="question-table" class="table w-full">
             <!-- head -->
             <thead>
             <tr>
@@ -99,8 +101,8 @@
             <!-- row 1 -->
             {{#each questions as |question|}}
             <tr>
-                <th data-id = "{{id}}">
-                    <button type="button" class="btn btn-default btn-sm"> Delete </button>
+                <th>
+                    <button data-id = "{{id}}" type="button" class="btn btn-default btn-sm"> Delete </button>
                 </th>
                 <td>{{id}}</td>
                 <td>{{career_field}}</td>
