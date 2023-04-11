@@ -20,8 +20,8 @@ body {
 .card{
     background-color: #808D8E;
     color: #fff;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 3%;
+    width: 48em;
 
 }
 .photo-frame {

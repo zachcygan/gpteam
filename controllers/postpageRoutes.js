@@ -32,18 +32,14 @@ router.get('/document/:id', async (req, res) => {
         const documentData = await Document.findByPk(req.param.id, {
             include: [
                 {
-                    model: User,
-                    attributes: ['id', 'name'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['comment_text', 'date_created'],
+                    model: User, Question, Comment,
+                    attributes: ['name', 'question_text', 'comment_text'],
                 },
             ],
         });
         const document = documentData.get({ plain: true });
 
-        res.render('document', {
+        res.render('individual', {
             ...document,
             logged_in: req.session.logged_in
         });
@@ -52,6 +48,32 @@ router.get('/document/:id', async (req, res) => {
     }
 });
 
+router.get('/question/:id', async (req, res) => {
+    try {
+        const questionData = await Question.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
+                },
+            ],
+        });
+        const question = questionData.get({ plain: true });
+
+        console.log(question);
+
+        res.render('individual', {
+            ...question,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/user', withAuth, async (req, res) => {
     try {

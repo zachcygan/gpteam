@@ -1,5 +1,4 @@
-<div class="profile-page">
-    <div>
+ <div>
         <h2 class="new-post-title">Create New Post</h2>
         
         <form id="file-upload-form" class="upload-form">
@@ -29,7 +28,7 @@
                 </select>                
             <input type="submit" value="Submit" class="btn" />
         </form>
-    </div>  
+    </div>
 
 {{#each documents as |document|}}
 
@@ -37,9 +36,6 @@
   <div class="card-body">
         <div class="w-10 rounded-full">
       <img src="../assets/images/avatars/avatar-pic-2.png" />
-<div class="card card-compact bg-base-100 shadow-xl">
-  <div class="card-body">
-        <div class="w-10 rounded-full">
       <a href='/profile/user/{{user_id}}'><img src="https://picsum.photos/id/237/600/600"></a>
     </div>
     <h2 class="card-title">By {{user.name}}:</h2>
