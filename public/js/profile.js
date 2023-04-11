@@ -71,5 +71,41 @@ const deleteDocumentHandler = async (event) => {
 }
 
 
+const bio = document.getElementById('bio');
+const updateButton = document.getElementById('updateButton');
+
+let originalBio = bio.textContent;
+console.log(originalBio)
+
+bio.addEventListener('change', (event) => {
+  updateButton.classList.remove('hidden')
+})
+
+updateButton.addEventListener('click', async (event) => {
+  event.preventDefault();
+  const updatedBio = bio.value.trim()
+
+  const response = await fetch('/api/users/bio', {
+    method: 'PUT',
+    body: JSON.stringify({
+      'bio': updatedBio
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  if (response.ok) {
+      location.reload();
+  }
+})
+
+// setInterval(function() {
+//   if (bio.textContent !== originalBio) {
+//     updateButton.classList.remove('hidden')
+//     console.log('changed')
+//   }
+// })
+
 document.querySelector('#document-table').addEventListener('click', deleteDocumentHandler);
 document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);

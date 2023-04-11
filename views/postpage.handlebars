@@ -49,17 +49,18 @@
 
 <div class="card card-compact w-120 bg-base-100 shadow-xl">
   <div class="card-body">
-        <div class="w-10 rounded-full">
-      <img src="../assets/images/avatars/avatar-pic-2.png" />
-      <a href='/profile/user/{{user_id}}'><img src="https://picsum.photos/id/237/600/600"></a>
+    <div class="w-10 rounded-full">
+      {{!-- <img src="../assets/images/avatars/avatar-pic-2.png" /> --}}
+      <a href='/profile/user/{{user_id}}'><img src="/assets/images/{{user.avatar_link}}"></a>
     </div>
     <h2 class="card-title">By {{user.name}}:</h2>
+    <h2 class="card-title">Field: {{career_field}} </h2>
     <h2 class="card-title">{{post_title}}</h2>
     <p>{{text}}</p>
     <div class="card-actions justify-end">
-     <a href='/post/question/{{id}}'> 
-      <button class="btn btn-primary"> View Post </button>
-    </a>
+      <a href='/post/question/{{id}}'>
+        <button class="btn btn-primary"> View Post </button>
+      </a>
     </div>
   </div>
 </div>
