@@ -70,10 +70,23 @@ bio.addEventListener('change', (event) => {
   updateButton.classList.remove('hidden')
 })
 
-updateButton.addEventListener('click', (event) => {
+updateButton.addEventListener('click', async (event) => {
   event.preventDefault();
+  const updatedBio = bio.value.trim()
 
-  
+  const response = await fetch('/api/users/bio', {
+    method: 'PUT',
+    body: JSON.stringify({
+      'bio': updatedBio
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  if (response.ok) {
+      location.reload();
+  }
 })
 
 // setInterval(function() {

@@ -90,4 +90,24 @@ router.post('/comment', async (req, res) => {
     }
 })
 
+router.put('/bio', async (req, res) => {
+    try {
+        console.log(req.body)
+        const bio = req.body.bio
+
+        const bioData = await User.update({
+            bio
+        },
+        {
+            where: {
+                id: req.session.user_id
+            }
+        })
+
+        res.status(200).json(bioData)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router;
