@@ -20,8 +20,9 @@
   "scripts": {
     "build-css": "tailwindcss -i ./input.css -o ./public/css/output.css --watch",
     "nodemon-start": "nodemon server.js",
-    "start": "concurrently \"npm run build-css\" \"npm run nodemon-start\"",
-    "seed": "node seeds/seed.js"
+    "dev": "concurrently \"npm run build-css\" \"npm run nodemon-start\"",
+    "seed": "node seeds/seed.js",
+    "start": "node server.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
