@@ -16,6 +16,15 @@
 body {
     background-color: #2b303a;
 }
+
+.card{
+    background-color: #808D8E;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 5%;
+
+
+}
 .photo-frame {
     background-color: #fff;
     padding: 10px;

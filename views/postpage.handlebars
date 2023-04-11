@@ -1,15 +1,14 @@
-{{#each documents as |document|}}
-<h2>Hello</h2>
-{{/each}}
-{{#each questions as |question|}}
 
-<div class="card card-compact w-60 bg-base-100 shadow-xl">
+{{#each documents as |document|}}
+
+<div class="card card-compact w-120 bg-base-100 shadow-xl">
   <div class="card-body">
         <div class="w-10 rounded-full">
-      <img src="https://picsum.photos/id/237/600/600" />
+      <img src="../assets/images/avatars/avatar-pic-2.png" />
     </div>
     <h2 class="card-title">By {{user.name}}:</h2>
-    <p>{{question_text}}</p>
+    
+    <p>{{document_text}}</p>
     <div class="card-actions justify-end">
      <a href='/post/question/{{id}}'> 
       <button class="btn btn-primary"> View Post </button>
