@@ -14,25 +14,34 @@ event.preventDefault();
     formData.append('text', text);
     formData.append('title', title);
 
-    try {
-      const response = await fetch('/api/uploads/upload', {
-        method: 'POST',
-        body: formData
-      });
-  
-      if (response.ok) {
-        const result = await response.json();
-        console.log(result);
-        //if the reponse from the route is ok, reloads the profile page
-        document.location.replace('/profile');
-      } else {
-        alert('Error uploading file');
-      }
-    } catch (error) {
-      console.error(error);
-      alert('Error uploading file');
-      document.location.replace('/profile');
+    //requires user has title and industry field filled and either a document of post text to proceed
+    if(title && career_field !== 'Select Industry'){
+      if(file || text ){    
+        try {
+          const response = await fetch('/api/uploads/upload', {
+            method: 'POST',
+            body: formData
+          });
+      
+          if (response.ok) {
+            const result = await response.json();
+            console.log(result);
+            //if the reponse from the route is ok, reloads the profile page
+            document.location.replace('/profile');
+          } else {
+            alert('Error uploading file');
+          }
+        } catch (error) {
+          console.error(error);
+          alert('Error uploading file');
+          document.location.replace('/profile');
+        }
+    }else{
+      alert("You didn't any content to post");
     }
+  }else{
+    alert("Your post must have a title and industry");
+  }
 }
 
 
@@ -53,9 +62,11 @@ const deleteDocumentHandler = async (event) => {
     } else {
       return;
     }
-  }else{
+  }else if(fallback){
     console.log(fallback);
       document.location.replace(`/post/question/${fallback}`)
+  }else{
+    return;
   }
 }
 
