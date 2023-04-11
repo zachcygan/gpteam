@@ -13,6 +13,7 @@ const s3Uploadv3 = async (files) => {
     const params = files.map((file) => {
         return {
             Bucket: process.env.AWS_BUCKET_NAME,
+            //creates a file name in the bucket using a UUID and appending the original file name to the end, this means that multiple files with the same name can be sent to the same folder without issue
             Key: `uploads/${uuid()}-${file.originalname}`,
             Body: file.buffer,
         };
@@ -25,12 +26,13 @@ const s3Uploadv3 = async (files) => {
     return uploadData.map((response, index) => {
         return{
             ...response,
+            //this added the bucket path with uuid to the upload data so we can properly store it in the db
             Key: params[index].Key
         }
     })
 };
 
-//these are multer middleware for aws storage
+//these are multer middleware for aws storage, mimetype is split to allow all files with "application" be uploaded to bucket, but will reject anything else (eg img, mov, wav, etc)
 const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
     if (file.mimetype.split("/")[0] === 'application') {
@@ -47,6 +49,7 @@ const upload = multer({
 
 router.post("/upload", upload.array("file"), async (req, res) => {
     try {
+        //checks to see it the post has an associated document and if it does sends to bucket, if not will just send the text post to the DB
         if(req.files.length > 0) {
         const results = await s3Uploadv3(req.files);
 
@@ -77,6 +80,7 @@ router.post("/upload", upload.array("file"), async (req, res) => {
     }
 });
 
+//this errors will throw if user doesn't follow the filter rules we set out above
 router.use((error, req, res, next) => {
     if (error instanceof multer.MulterError) {
         if (error.code === "LIMIT_FILE_SIZE") {

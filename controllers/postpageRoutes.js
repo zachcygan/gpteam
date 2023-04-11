@@ -15,6 +15,9 @@ router.get('/', withAuth, async (req, res) => {
                     attributes: ['comment_text'],
                 },
             ],
+            order: [[
+                'date_uploaded', 'DESC'
+            ]]
         });
         const documents = documentData.map((document) => document.get({ plain: true }));
 
