@@ -3578,6 +3578,10 @@ html {
   }
 }
 
+.card {
+  margin: 10px;
+}
+
 .card :where(figure:first-child) {
   overflow: hidden;
   border-start-start-radius: inherit;
