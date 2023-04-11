@@ -4952,6 +4952,14 @@ html {
   left: initial;
 }
 
+.modal-bottom {
+  align-items: flex-end;
+}
+
+.modal-middle {
+  align-items: center;
+}
+
 .avatar.online:before {
   content: "";
   position: absolute;
