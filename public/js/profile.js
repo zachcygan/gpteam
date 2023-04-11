@@ -14,11 +14,6 @@ event.preventDefault();
     formData.append('text', text);
     formData.append('title', title);
 
-    console.log(career_field);
-    console.log(title);
-    console.log(text);
-  
-    
     try {
       const response = await fetch('/api/uploads/upload', {
         method: 'POST',
@@ -43,21 +38,25 @@ event.preventDefault();
 
 const deleteDocumentHandler = async (event) => {
   event.preventDefault();
+  //this grabs the id from the delete button to use in the delete param
   const id = event.target.dataset.id;
-  console.log(id);
+  const fallback = event.target.dataset.fallback;
+  console.log(fallback);
 
   if(id){
-const response = await fetch(`/api/document/${id}`, {
+    const response = await fetch(`/api/document/${id}`, {
     method: 'DELETE'
-});
-if (response.ok) {
+  });
+    if (response.ok) {
     //if the reponse from the route is ok, reloads the profile page
     document.location.replace('/profile');
-} else {
-  document.location.replace(`/post/question/${id}`);
-    return;
-}
-}
+    } else {
+      return;
+    }
+  }else{
+    console.log(fallback);
+      document.location.replace(`/post/question/${fallback}`)
+  }
 }
 
 
