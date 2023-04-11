@@ -81,6 +81,8 @@ router.get('/question/:id', async (req, res) => {
         });
         const question = questionData.get({ plain: true });
 
+        console.log(question);
+
         res.render('individual', {
             ...question,
             logged_in: req.session.logged_in
@@ -152,6 +154,7 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 
 module.exports = router;
