@@ -56,7 +56,7 @@ router.get('/document/:id', async (req, res) => {
         });
         const document = documentData.get({ plain: true });
 
-        res.render('document', {
+        res.render('individual', {
             ...document,
             logged_in: req.session.logged_in
         });
@@ -67,7 +67,7 @@ router.get('/document/:id', async (req, res) => {
 
 router.get('/question/:id', async (req, res) => {
     try {
-        const questionData = await Question.findByPk(req.params.id, {
+        const documentData = await Document.findByPk(req.params.id, {
             include: [
                 {
                     model: User,
@@ -79,12 +79,12 @@ router.get('/question/:id', async (req, res) => {
                 },
             ],
         });
-        const question = questionData.get({ plain: true });
+        const document = documentData.get({ plain: true });
 
-        console.log(question);
+        console.log(document);
 
         res.render('individual', {
-            ...question,
+            ...document,
             logged_in: req.session.logged_in
         });
     } catch (err) {
