@@ -21,7 +21,9 @@ body {
     background-color: #808D8E;
     color: #fff;
     margin: 3%;
-    width: 48em;
+    width: inherit;
+    justify-content: center;
+
 
 }
 .photo-frame {
