@@ -1,4 +1,4 @@
- <div>
+    <div>
         <h2 class="new-post-title">Create New Post</h2>
         
         <form id="file-upload-form" class="upload-form">
@@ -25,10 +25,25 @@
                     <option>Transportation</option>
                     <option>Utilities</option>
                     <option>Wholesale</option>
-                </select>                
-            <input type="submit" value="Submit" class="btn" />
+                </select>    
+                <!-- The button to open modal -->
+                    <label for="my-modal" class="btn">submit</label>
+
+                    <!-- Put this part before </body> tag -->
+                    <input type="checkbox" id="my-modal" class="modal-toggle" />
+                    <div class="modal">
+                    <div class="modal-box">
+                        <h3 class="font-bold text-lg">WARNING!</h3>
+                        <p class="py-4">Resumes and cover letters often contain sensetive personal information. If there is information on this post that you are not comfortable sharing to a public site, please cancel and edit the document first</p>
+                        <div class="modal-action">
+                        <input type="submit" value="Submit" class="btn" />
+                        <label for="my-modal" class="btn">Cancel</label>
+                        </div>
+                    </div>
+                    </div>            
+                    
         </form>
-    </div>
+    </div>  
 
 {{#each documents as |document|}}
 

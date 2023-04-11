@@ -26,14 +26,29 @@
                     <option>Transportation</option>
                     <option>Utilities</option>
                     <option>Wholesale</option>
-                </select>                
-            <input type="submit" value="Submit" class="btn" />
+                </select>    
+                <!-- The button to open modal -->
+                    <label for="my-modal" class="btn">submit</label>
+
+                    <!-- Put this part before </body> tag -->
+                    <input type="checkbox" id="my-modal" class="modal-toggle" />
+                    <div class="modal">
+                    <div class="modal-box">
+                        <h3 class="font-bold text-lg">WARNING!</h3>
+                        <p class="py-4">Resumes and cover letters often contain sensetive personal information. If there is information on this post that you are not comfortable sharing to a public site, please cancel and edit the document first</p>
+                        <div class="modal-action">
+                        <input type="submit" value="Submit" class="btn" />
+                        <label for="my-modal" class="btn">Cancel</label>
+                        </div>
+                    </div>
+                    </div>            
+                    
         </form>
     </div>  
 
     <div class="table-grid">
         <div class="overflow-x-auto table-single">
-        <h2 class="table-title">Your posts</h2>
+        <h2 class="table-title">Your Posts</h2>
         <table id="document-table" class="table w-full">
             <!-- head -->
             <thead>
@@ -47,9 +62,9 @@
             </thead>
             <tbody>
                  {{#each documents as |document|}}
-            <tr>
+                <tr>
                 <th>
-                    <button data-id = "{{id}}" type="button" class="btn btn-default btn-sm"> Delete </button>
+                <label data-id="{{id}}" for="my-modal-2" class="btn">Delete</label>
                 </th>
                 <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{id}}</a></td>
                 <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{post_title}}</a></td>
