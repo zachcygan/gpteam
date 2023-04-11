@@ -4952,6 +4952,14 @@ html {
   left: initial;
 }
 
+.modal-bottom {
+  align-items: flex-end;
+}
+
+.modal-middle {
+  align-items: center;
+}
+
 .avatar.online:before {
   content: "";
   position: absolute;
@@ -6325,6 +6333,14 @@ html {
 @media (min-width: 640px) {
   .sm\:inline {
     display: inline;
+  }
+
+  .sm\:h-96 {
+    height: 24rem;
+  }
+
+  .sm\:w-96 {
+    width: 24rem;
   }
 
   .sm\:grid-cols-2 {
