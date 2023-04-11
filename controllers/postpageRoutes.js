@@ -12,31 +12,14 @@ router.get('/', withAuth, async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text', 'data_created', 'date_created'],
+                    attributes: ['comment_text', 'date_created'],
                 },
             ],
         });
         const documents = documentData.map((document) => document.get({ plain: true }));
 
-        const questionData = await Question.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['id', 'name'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['comment_text', 'data_created', 'date_created'],
-                },
-            ],
-        });
-
-        const questions = questionData.map((document) => document.get({ plain: true }));
-
-
         res.render('postpage', {
             documents,
-            questions,
             logged_in: req.session.logged_in
         });
     } catch (err) {
@@ -54,7 +37,7 @@ router.get('/document/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text', 'data_created', 'date_created'],
+                    attributes: ['comment_text', 'date_created'],
                 },
             ],
         });
@@ -68,24 +51,6 @@ router.get('/document/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-router.get('/question/:id', async (req, res) => {
-    try {
-        const questionData = await Question.findByPk(req.params.id, {
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['comment_text'],
-                },
-            ],
-        });
-        const question = questionData.get({ plain: true });
-
-        console.log(question);
 
 
 router.get('/user', withAuth, async (req, res) => {
