@@ -11,9 +11,11 @@ Document.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        post_title: {
+            type: DataTypes.TEXT,
+           },
         bucket_link: {
             type: DataTypes.TEXT,
-            allowNull: false,
         },
         text:{
             type:DataTypes.TEXT,
@@ -23,6 +25,7 @@ Document.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
           },
+
         career_field: {
             type: DataTypes.STRING,
             allowNull: false,

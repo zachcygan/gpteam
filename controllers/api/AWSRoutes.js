@@ -47,6 +47,7 @@ const upload = multer({
 
 router.post("/upload", upload.array("file"), async (req, res) => {
     try {
+        if(req.files.length > 0) {
         const results = await s3Uploadv3(req.files);
 
         const s3BucketURL = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/`;
@@ -55,10 +56,22 @@ router.post("/upload", upload.array("file"), async (req, res) => {
             bucket_link: s3BucketURL + results[0].Key, // Assuming you're uploading a single file
             career_field: req.body.career_field,
             text: req.body.text,
+            post_title: req.body.title,
             user_id: req.session.user_id
         })
-
+    
         return res.json({ status: "success", document });
+    }else {
+        const document = await Document.create({
+            bucket_link: null,
+            career_field: req.body.career_field,
+            text: req.body.text,
+            post_title: req.body.title,
+            user_id: req.session.user_id
+        })
+        return res.json({ status: "success", document });
+
+    }
     } catch (err) {
         console.log(err);
     }

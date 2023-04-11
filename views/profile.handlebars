@@ -1,10 +1,11 @@
    <div class="profile-page">
 </section>
     <div>
-        <h2 class="new-post-title">Create New Document Post</h2>
+        <h2 class="new-post-title">Create New Post</h2>
         
         <form id="file-upload-form" class="upload-form">
-            <input id="document-text-input" type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" />
+            <input id="document-title" type="text" placeholder="Post Title" class="input input-bordered input-info w-full max-w-xs" />
+            <input id="document-text-input" type="text" placeholder="Post Text" class="input input-bordered input-info w-full max-w-xs" />
             <input id="file-input"type="file" class="file-input file-input-bordered file-input-info w-full max-w-xs" />
                 <select id="file-industry" class="select select-primary w-full max-w-xs">
                     <option disabled selected>Select Industry</option>
@@ -30,44 +31,17 @@
             <input type="submit" value="Submit" class="btn" />
         </form>
     </div>  
-    <div>
-        <h2 class="new-post-title">Create Question/Text Post</h2>
-        <form id="question-upload-form" class="upload-form">
-            <input id="question-input" type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" />
-                <select id="question-industry" class="select select-primary w-full max-w-xs">
-                    <option disabled selected>Select Industry</option>
-                    <option>Accomodation and Food Services</option>
-                    <option>Administration</option>
-                    <option>Agriculture, Forestry, Fishing and Hunting</option>
-                    <option>Construction</option>
-                    <option>Education</option>
-                    <option>Finance and Insurance</option>
-                    <option>Healthcare</option>
-                    <option>Industrial Machinery</option>
-                    <option>Information</option>
-                    <option>Manufacturing</option>
-                    <option>Mining</option>
-                    <option>Scientific and Technical Services</option>
-                    <option>Real Estate</option>
-                    <option>Retail</option>
-                    <option>Technology</option>
-                    <option>Transportation</option>
-                    <option>Utilities</option>
-                    <option>Wholesale</option>
-                </select>     
-             <input type="submit" value="Submit" class="btn" />
-        </form>
 
-    </div>  
     <div class="table-grid">
         <div class="overflow-x-auto table-single">
-        <h2 class="table-title">Uploaded Documents</h2>
+        <h2 class="table-title">Your posts</h2>
         <table id="document-table" class="table w-full">
             <!-- head -->
             <thead>
             <tr>
                 <th></th>
                 <th>Post ID</th>
+                <th>Title</th>
                 <th>Industry</th>
                 <th>Date Uploaded</th>
             </tr>
@@ -79,6 +53,7 @@
                     <button data-id = "{{id}}" type="button" class="btn btn-default btn-sm"> Delete </button>
                 </th>
                 <td>{{id}}</td>
+                <td>{{post_title}}</td>
                 <td>{{career_field}}</td>
                 <td>{{date_uploaded}}</td>
                 {{/each}}
@@ -86,35 +61,6 @@
             </tbody>
         </table>
         </div>
-        <div class="overflow-x-auto table-single">
-        <h2 class="table-title">Other Posts</h2>
-        <table id="question-table" class="table w-full">
-            <!-- head -->
-            <thead>
-            <tr>
-                <th></th>
-                <th>Post ID</th>
-                <th>Industry</th>
-                <th>Date Uploaded</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- row 1 -->
-            {{#each questions as |question|}}
-            <tr>
-                <th>
-                    <button data-id = "{{id}}" type="button" class="btn btn-default btn-sm"> Delete </button>
-                </th>
-                <td>{{id}}</td>
-                <td>{{career_field}}</td>
-                <td>{{date_uploaded}}</td>
-            </tr>
-            {{/each}}
-            </tbody>
-          </table>
-        </div>
-    </div>
-
-</div>
+       </div>
 
 <script src="/js/profile.js"></script>
