@@ -1,8 +1,9 @@
 
+
     <div class="container mx-auto px-4 py-8">
 		<h2 class="post-container object-none object-left-top title font-bold">{{user.name}}'s Current Post</h2>
 		<div class="photo-frame">
-			<img src="https://picsum.photos/id/237/600/600" alt="Framed Photo">
+			{{question_text}}
 		</div>
 	</div>
 
@@ -12,6 +13,7 @@
 		<h2 class="text-3xl font-bold mb-4">Comments</h2>
 	</div>
 
+{{#each comments as |comment|}}
 <div class="comment-bubbles">
 <div class="chat chat-start">
   <div class="chat-image avatar">
@@ -20,26 +22,12 @@
     </div>
   </div>
   <div class="chat-header">
-    David Goggins
+    {{user.name}}
   </div>
-  <div class="chat-bubble">I can help with all your problems</div>
-  </div>
-</div>
-
-<div class="comment-bubbles">
-<div class="chat chat-start">
-  <div class="chat-image avatar">
-    <div class="w-10 rounded-full">
-      <img src="https://picsum.photos/id/237/600/600" />
-    </div>
-  </div>
-  <div class="chat-header">
-    Bill Stevens
-  </div>
-  <div class="chat-bubble">I am commenting about how to help you</div>
+  <div class="chat-bubble">{{comments}}</div>
   </div>
 </div>
-
+{{/each}}
 
 </section>
 <div class="comment-form">
