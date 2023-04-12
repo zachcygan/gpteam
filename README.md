@@ -9,12 +9,15 @@ In order to get this application operational it required us to use our knowledge
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-- [Tests](#tests)
-- [Questions](#questions)
+- [Project Perfect Career Help  	](#project-perfect-career-help--)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Tests](#tests)
+  - [Questions](#questions)
 
 ## Installation
 
@@ -42,3 +45,7 @@ If you have questions about this application you can reach me for more informati
 Github: github.com/Carechiga
 
 Email: carechiga43@gmail.com
+
+Github: github.com/MonaMLii
+
+Email: missermona@gmail.com
