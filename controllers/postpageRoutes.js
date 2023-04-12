@@ -19,6 +19,7 @@ router.get('/', withAuth, async (req, res) => {
                 'date_uploaded', 'DESC'
             ]]
         });
+
         const documents = documentData.map((document) => document.get({ plain: true }));
 
 
