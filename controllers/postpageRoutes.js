@@ -17,7 +17,7 @@ router.get('/', withAuth, async (req, res) => {
             ],
             order: [[
                 'date_uploaded', 'DESC'
-            ]]
+            ]],
         });
 
         const documents = documentData.map((document) => document.get({ plain: true }));
@@ -32,25 +32,41 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/document/:id', async (req, res) => {
+router.get('/:industry', withAuth, async (req, res) => {
+
     try {
-        const documentData = await Document.findByPk(req.param.id, {
+        console.log(req.params.industry, 'test');
+        const documentData = await Document.findAll({
             include: [
                 {
-                    model: User, Comment,
+                    model: User,
+                    attributes: ['name', 'avatar_link'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
                 },
             ],
+            where: {
+                career_field: req.params.industry
+            },
+            order: [[
+                'date_uploaded', 'DESC'
+            ]],
         });
-        const document = documentData.get({ plain: true });
 
-        res.render('document', {
-            ...document,
-            logged_in: req.session.logged_in
+        const documents = documentData.map((document) => document.get({ plain: true }));
+
+
+        res.render('postpage', {
+            documents,
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
 
 router.get('/question/:id', async (req, res) => {
     try {
@@ -79,32 +95,32 @@ router.get('/question/:id', async (req, res) => {
     }
 });
 
-router.get('/user', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [
-                { model: Document },
-            ],
-        });
-        const user = userData.get({ plain: true });
+// router.get('/user', withAuth, async (req, res) => {
+//     try {
+//         const userData = await User.findByPk(req.session.user_id, {
+//             attributes: { exclude: ['password'] },
+//             include: [
+//                 { model: Document },
+//             ],
+//         });
+//         const user = userData.get({ plain: true });
 
-        res.render('profile', {
-            ...user,
-            logged_in: true
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.render('profile', {
+//             ...user,
+//             logged_in: true
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/blog');
-        return;
-    }
-    res.render('login');
-});
+// router.get('/login', (req, res) => {
+//     if (req.session.logged_in) {
+//         res.redirect('/blog');
+//         return;
+//     }
+//     res.render('login');
+// });
 
 
 router.post('/', withAuth, async (req, res) => {
