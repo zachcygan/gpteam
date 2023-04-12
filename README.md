@@ -39,6 +39,10 @@ This application is covered under the following license: MIT License
 ## Questions
 If you have questions about this application you can reach me for more information here - 
 
-Github: github.com/Carechiga
+Github: [github.com/Carechiga](https://github.com/Carechiga)
 
-Email: carechiga43@gmail.com
+Email: [carechiga43@gmail.com](malito:carechiga43@gmail.com)
+
+GitHub Username: [Snowman271](https://github.com/Snowman271)
+
+Email: [tbenzmiller@cs.com](mailto:tbenzmiller@cs.com) 
