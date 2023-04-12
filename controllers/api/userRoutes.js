@@ -79,10 +79,11 @@ router.post('/logout', (req, res) => {
 });
 
 router.post('/comment', async (req, res) => {
+    console.log(req.body);
     try {
         const commentData = await Comment.create({
-            content: req.body.content,
-            post_id: req.session.post_id,
+            comment_text: req.body.comment_text,
+            document_id: req.body.document_id,
             user_id: req.session.user_id
         })
 
