@@ -50,6 +50,8 @@ const handleFilter = (event) => {
 
   const fltr = document.querySelector(".filter-btn").textContent;
 
+  
+
 //   const response = fetch('fltr') {
 //     method: 'GET',
 //     body: 
