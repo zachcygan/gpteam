@@ -1,3 +1,5 @@
+const { query } = require("express");
+
 const AWSupload = async (event) => {
     event.preventDefault();
     
@@ -43,4 +45,26 @@ const AWSupload = async (event) => {
       }
   }
 
-    document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);
+const handleFilter = (event) => {
+  event.preventDefault();
+
+  const fltr = document.querySelector(".filter-btn").textContent;
+
+  const response = await fetch('') {
+    method: 'GET',
+
+  }
+      
+    }
+ 
+
+
+  // query seelect the filter field .value/.textContent
+  // do get route
+  // fetch()
+  // document.replace
+}
+
+document.querySelector(".filter-btn").addEventListener('onClick', handleFilter)
+
+document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);

@@ -31,6 +31,34 @@
     <!-- The button to open modal -->
     <label for="my-modal" class="btn">submit</label>
 
+    {{!-- filter button --}}
+<div id="filter-field" class="filter-fld">
+    <input id="file-input" type="file" class="file-input file-input-bordered file-input-info w-full max-w-xs" />
+    <select id="file-industry" class="select select-primary w-full max-w-xs select-filter">
+      <option disabled selected>Industry Filter</option>
+      <option>Accomodation and Food Services</option>
+      <option>Administration</option>
+      <option>Agriculture, Forestry, Fishing and Hunting</option>
+      <option>Construction</option>
+      <option>Education</option>
+      <option>Finance and Insurance</option>
+      <option>Healthcare</option>
+      <option>Industrial Machinery</option>
+      <option>Information</option>
+      <option>Manufacturing</option>
+      <option>Mining</option>
+      <option>Scientific and Technical Services</option>
+      <option>Real Estate</option>
+      <option>Retail</option>
+      <option>Technology</option>
+      <option>Transportation</option>
+      <option>Utilities</option>
+      <option>Wholesale</option>
+    </select>
+
+    <label for="my-modal" class="filter-btn">Select Filter</label>
+</div>
+
     <!-- Put this part before </body> tag -->
     <input type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
