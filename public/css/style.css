@@ -33,6 +33,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    margin-left: 1%;
     width: 50%;
    
 }
@@ -193,15 +194,18 @@ color: #e2e8f0;
 
 .comment-section {
    width: 50%;
-   position: absolute;
-   top: 180px;
-   right: 0;
+
 }
 
 .post-container {
    color: #4f46e5;
-   position: relative;
-   right: 800px;
+   margin-left: 10%;
+   margin-right: 10%;
+   display: flex; 
+   justify-content: center;
+   font-weight: bold;
+   font-size: 50px;
+   width: 100%;
 }
  
 .comment-bubbles {
@@ -212,3 +216,23 @@ color: #e2e8f0;
     margin: 15px;
     margin-bottom: 30px;
 }
+
+.top-half {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ @media screen and (min-width: 375px) {
+    iframe {
+        background-color: rgb(131, 10, 91);
+        max-height: 200px;
+    }
+  }
+  
+  @media screen and (min-width: 700px) {
+    iframe {
+        background-color: rgb(131, 10, 91);
+        max-height: 700px;
+    }
+  }
