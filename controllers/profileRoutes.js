@@ -12,9 +12,17 @@ router.get('/', async (req, res) => {
                 model: User,
             }]
         });
-        const document = documentData.map((document) => document.get({plain:true}));
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'], include: ['bio'] },
+            include: [{ model: Document }]
+          })
+      
+          const user = userData.get({ plain: true })
+        const documents = documentData.map((document) => document.get({plain:true}));
+        console.log({documents});
         res.render('profile', {
-            document
+            user,
+            documents
     });
 }catch (err) {
     res.status(500).json(err);
