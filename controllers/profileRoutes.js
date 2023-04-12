@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { User, Document } = require('../models');
 const withAuth = require('../util/auth');
 
-router.get('/', async (req, res) => {
+//get all documents with user id equal to user from session data
+router.get('/', withAuth, async (req, res) => {
     try{
         const documentData = await Document.findAll({
             where: {
@@ -30,6 +31,7 @@ router.get('/', async (req, res) => {
 }
 });
 
+//gets all document data from user with the same id as selected from a post on the DOM aka views other user profiles
 router.get('/user/:id', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
@@ -62,7 +64,5 @@ router.get('/user/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-
 
 module.exports = router; 

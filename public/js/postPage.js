@@ -50,15 +50,9 @@ const handleFilter = async (event) => {
 
   const fltr = document.querySelector("#file-industry2").value;
   console.log(fltr);
+  if(fltr !== 'Industry Filter'){ 
   document.location.replace(`/post/${fltr}`);
-  // // const response = await fetch(`/post/${fltr}`, {
-  // //   method: 'GET',
-  // // })
-  // if (response.ok) {
-
-  // } else {
-  //   return
-  // }
+  }
 }
 
 

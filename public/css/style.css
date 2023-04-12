@@ -171,7 +171,7 @@ color: #e2e8f0;
 }
 .new-post-title{
     text-align: center;
-    font-size: larger;
+    font-size: x-large;
     font-weight: 700;
     padding-bottom: 10px;
     padding-top: 5px;
@@ -236,3 +236,22 @@ color: #e2e8f0;
         max-height: 700px;
     }
   }
+.filter-fld{
+  margin: 20px;    
+}
+.filter-title{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    text-decoration: underline;
+}
+
+.filter-unit{
+    display: flex;
+    justify-content: center;
+}
+.profile-page{
+    height:100%;
+}

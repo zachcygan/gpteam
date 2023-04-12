@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Document, Comment } = require('../models');
 const withAuth = require('../util/auth');
 
+//this loads all posts/documents from all users on the post page and lists them from newest to oldest
 router.get('/', withAuth, async (req, res) => {
     try {
         const documentData = await Document.findAll({
@@ -15,6 +16,7 @@ router.get('/', withAuth, async (req, res) => {
                     attributes: ['comment_text'],
                 },
             ],
+             //lists the document posts from newest to oldest
             order: [[
                 'date_uploaded', 'DESC'
             ]],
@@ -32,6 +34,7 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
+//this endpoint grabs all posts from all users with the specified industry filer (career field) and posts them to the page from newest to oldest
 router.get('/:industry', withAuth, async (req, res) => {
 
     try {
@@ -47,9 +50,11 @@ router.get('/:industry', withAuth, async (req, res) => {
                     attributes: ['comment_text'],
                 },
             ],
+            //specifies which careerfield to load posts from
             where: {
                 career_field: req.params.industry
             },
+            //lists the document posts from newest to oldest
             order: [[
                 'date_uploaded', 'DESC'
             ]],
@@ -96,33 +101,6 @@ router.get('/question/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// router.get('/user', withAuth, async (req, res) => {
-//     try {
-//         const userData = await User.findByPk(req.session.user_id, {
-//             attributes: { exclude: ['password'] },
-//             include: [
-//                 { model: Document },
-//             ],
-//         });
-//         const user = userData.get({ plain: true });
-
-//         res.render('profile', {
-//             ...user,
-//             logged_in: true
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-// router.get('/login', (req, res) => {
-//     if (req.session.logged_in) {
-//         res.redirect('/blog');
-//         return;
-//     }
-//     res.render('login');
-// });
 
 
 router.post('/', withAuth, async (req, res) => {

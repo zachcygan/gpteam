@@ -3,10 +3,9 @@ const withAuth = require('../util/auth');
 const { User, Comment, Document} = require('../models');
 const session = require('express-session');
 
+//renders hompage handle bars in the main when at this end point
 router.get('/', async (req, res) => {
   try {
-
-
     res.render('homepage', {
       logged_in: req.session.logged_in
     })
