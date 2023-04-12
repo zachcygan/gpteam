@@ -6335,14 +6335,6 @@ html {
     display: inline;
   }
 
-  .sm\:h-96 {
-    height: 24rem;
-  }
-
-  .sm\:w-96 {
-    width: 24rem;
-  }
-
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
