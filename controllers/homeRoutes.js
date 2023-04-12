@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../util/auth');
-const { User, Comment, Document, Question } = require('../models');
+const { User, Comment, Document} = require('../models');
 const session = require('express-session');
 
 router.get('/', async (req, res) => {
@@ -19,7 +19,7 @@ router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'], include: ['bio'] },
-      include: [{ model: Document }, { model: Question }]
+      include: [{ model: Document }]
     })
 
     const user = userData.get({ plain: true })
