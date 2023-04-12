@@ -1,23 +1,26 @@
-const commentBtn = document.getElementById('commentBtn');
+const commentBtn = document.getElementById('comment-form');
 
 const commentSection = document.getElementById('commentSection');
-const commentContent = '';
+console.log('hello');
 
-commentBtn.addEventListener('click', async function(event) {
+commentBtn.addEventListener('submit', async function(event) {
+event.preventDefault();    
+console.log('working');
 const id = event.target.dataset.id;
-commentContent = document.getElementById('comment-input').value;
-commentInput.value = '';
-const response = await fetch('api/users/comment', {
+let commentContent = document.getElementById('comment-input').value.trim();
+const response = await fetch('/api/users/comment', {
     method: 'POST', 
-    headers: {'Content-type': 'application/json'},
-    body: {
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
         comment_text: commentContent,
         document_id: id
-    }
+        
+    })
 })
 if (response.ok) {
     location.reload()
 } else {
     alert(response.statusText);
+    console.log('not working');
 }
 });
