@@ -62,8 +62,10 @@ router.get('/question/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text'],
+                    attributes: ['comment_text', 'user_id'],
+                    include: [{model: User}],
                 },
+
             ],
         });
         const document = documentData.get({ plain: true });
