@@ -27,6 +27,9 @@ In order to get this application operational it required us to use our knowledge
 
 After a user creates an account. They can create their own posts that can include a relevant document for critique (such as a Resume or Cover letter) or post without a document just for a general inquiry to be answered by their community. In addition they can view other people's posts and commnent to add their own insight. Posts can be created on both the Post page or directly on the profile page. Old posts can be deleted by a user, if they are no longer needed or relevant. In addition the Chat bot which can be accessed on all pages in the lower right hand corner can offer very great general insight with a quick response time.
 
+## Deployed
+https://gpteam.herokuapp.com/
+
 ## Credits
 
 Our team consists of Zach Cygan, Tiler Benziller, Mona Lee, and Chris Arechiga. 
@@ -38,7 +41,6 @@ This application is covered under the following license: MIT License
 ## Tests
 
 
-
 ## Questions
 If you have questions about this application you can reach me for more information here - 
 
@@ -46,16 +48,16 @@ If you have questions about this application you can reach me for more informati
 ## Contributers
 Github: [Carechiga](https://github.com/Carechiga)
 
-Email: [carechiga43@gmail.com](malito:carechiga43@gmail.com)
+Email: [carechiga43@gmail.com](mailto:carechiga43@gmail.com)
 
-GitHub : [Snowman271](https://github.com/Snowman271)
+GitHub: [Snowman271](https://github.com/Snowman271)
 
 Email: [tbenzmiller@cs.com](mailto:tbenzmiller@cs.com) 
 
 Github: [MonaMLii](https://github.com/MonaMLii)
 
-Email: [missermona@gmail.com](malito:missermona@gmail.com)
+Email: [missermona@gmail.com](mailto:missermona@gmail.com)
 
 Github: [zachcygan](https://github.com/zachcygan)
 
-Email:[zachcygan@gmail.com](malito:zachcygan@gmail.com)
+Email: [zachcygan@gmail.com](mailto:zachcygan@gmail.com)
