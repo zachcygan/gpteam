@@ -42,7 +42,9 @@ This application is covered under the following license: MIT License
 ## Questions
 If you have questions about this application you can reach me for more information here - 
 
-Github: [github.com/Carechiga](https://github.com/Carechiga)
+
+## Contributers
+Github: [Carechiga](https://github.com/Carechiga)
 
 Email: [carechiga43@gmail.com](malito:carechiga43@gmail.com)
 
@@ -50,7 +52,10 @@ GitHub : [Snowman271](https://github.com/Snowman271)
 
 Email: [tbenzmiller@cs.com](mailto:tbenzmiller@cs.com) 
 
-Github: github.com/MonaMLii
+Github: [MonaMLii](https://github.com/MonaMLii)
 
-Email: missermona@gmail.com
+Email: [missermona@gmail.com](malito:missermona@gmail.com)
 
+Github: [zachcygan](https://github.com/zachcygan)
+
+Email:[zachcygan@gmail.com](malito:zachcygan@gmail.com)
