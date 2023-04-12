@@ -1,50 +1,71 @@
- <div>
-        <h2 class="new-post-title">Create New Post</h2>
-        
-        <form id="file-upload-form" class="upload-form">
-            <input id="document-title" type="text" placeholder="Post Title" class="input input-bordered input-info w-full max-w-xs" />
-            <input id="document-text-input" type="text" placeholder="Post Text" class="input input-bordered input-info w-full max-w-xs" />
-            <input id="file-input"type="file" class="file-input file-input-bordered file-input-info w-full max-w-xs" />
-                <select id="file-industry" class="select select-primary w-full max-w-xs">
-                    <option disabled selected>Select Industry</option>
-                    <option>Accomodation and Food Services</option>
-                    <option>Administration</option>
-                    <option>Agriculture, Forestry, Fishing and Hunting</option>
-                    <option>Construction</option>
-                    <option>Education</option>
-                    <option>Finance and Insurance</option>
-                    <option>Healthcare</option>
-                    <option>Industrial Machinery</option>
-                    <option>Information</option>
-                    <option>Manufacturing</option>
-                    <option>Mining</option>
-                    <option>Scientific and Technical Services</option>
-                    <option>Real Estate</option>
-                    <option>Retail</option>
-                    <option>Technology</option>
-                    <option>Transportation</option>
-                    <option>Utilities</option>
-                    <option>Wholesale</option>
-                </select>                
-            <input type="submit" value="Submit" class="btn" />
-        </form>
+<div>
+  <h2 class="new-post-title">Create New Post</h2>
+
+  <form id="file-upload-form" class="upload-form">
+    <input id="document-title" type="text" placeholder="Post Title"
+      class="input input-bordered input-info w-full max-w-xs" />
+    <input id="document-text-input" type="text" placeholder="Post Text"
+      class="input input-bordered input-info w-full max-w-xs" />
+    <input id="file-input" type="file" class="file-input file-input-bordered file-input-info w-full max-w-xs" />
+    <select id="file-industry" class="select select-primary w-full max-w-xs">
+      <option disabled selected>Select Industry</option>
+      <option>Accomodation and Food Services</option>
+      <option>Administration</option>
+      <option>Agriculture, Forestry, Fishing and Hunting</option>
+      <option>Construction</option>
+      <option>Education</option>
+      <option>Finance and Insurance</option>
+      <option>Healthcare</option>
+      <option>Industrial Machinery</option>
+      <option>Information</option>
+      <option>Manufacturing</option>
+      <option>Mining</option>
+      <option>Scientific and Technical Services</option>
+      <option>Real Estate</option>
+      <option>Retail</option>
+      <option>Technology</option>
+      <option>Transportation</option>
+      <option>Utilities</option>
+      <option>Wholesale</option>
+    </select>
+    <!-- The button to open modal -->
+    <label for="my-modal" class="btn">submit</label>
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">WARNING!</h3>
+        <p class="py-4">Resumes and cover letters often contain sensetive personal information. If there is information
+          on this post that you are not comfortable sharing to a public site, please cancel and edit the document first
+        </p>
+        <div class="modal-action">
+          <input type="submit" value="Submit" class="btn" />
+          <label for="my-modal" class="btn">Cancel</label>
+        </div>
+      </div>
     </div>
+
+  </form>
+</div>
 
 {{#each documents as |document|}}
 
 <div class="card card-compact w-120 bg-base-100 shadow-xl">
   <div class="card-body">
-        <div class="w-10 rounded-full">
-      <img src="../assets/images/avatars/avatar-pic-2.png" />
-      <a href='/profile/user/{{user_id}}'><img src="https://picsum.photos/id/237/600/600"></a>
+    <div class="w-10 rounded-full">
+      {{!-- <img src="../assets/images/avatars/avatar-pic-2.png" /> --}}
+      <a href='/profile/user/{{user_id}}'><img src="/assets/images/{{user.avatar_link}}"></a>
     </div>
     <h2 class="card-title">By {{user.name}}:</h2>
+    <h2 class="card-title">Field: {{career_field}} </h2>
     <h2 class="card-title">{{post_title}}</h2>
     <p>{{text}}</p>
+    <h2 class="card-title">{{date_uploaded}}</h2>
     <div class="card-actions justify-end">
-     <a href='/post/question/{{id}}'> 
-      <button class="btn btn-primary"> View Post </button>
-    </a>
+      <a href='/post/question/{{id}}'>
+        <button class="btn btn-primary"> View Post </button>
+      </a>
     </div>
   </div>
 </div>
