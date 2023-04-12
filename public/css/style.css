@@ -21,14 +21,7 @@ body {
     background-color: #808D8E;
     color: #fff;
     margin: 3%;
-<<<<<<< HEAD
-    width: inherit;
-    justify-content: center;
-
-
-=======
     width: inherit;justify-content: center;
->>>>>>> aad872c9934899cb4d38e080053d11073fd265cb
 }
 .photo-frame {
     background-color: #fff;

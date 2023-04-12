@@ -49,6 +49,35 @@
   </form>
 </div>
 
+{{!-- filter button --}}
+
+<div id="filter-field2" class="filter-fld">
+  <select id="file-industry2" class="select select-primary w-full max-w-xs select-filter">
+    <option disabled selected>Industry Filter</option>
+    <option>Accomodation and Food Services</option>
+    <option>Administration</option>
+    <option>Agriculture, Forestry, Fishing and Hunting</option>
+    <option>Construction</option>
+    <option>Education</option>
+    <option>Finance and Insurance</option>
+    <option>Healthcare</option>
+    <option>Industrial Machinery</option>
+    <option>Information</option>
+    <option>Manufacturing</option>
+    <option>Mining</option>
+    <option>Scientific and Technical Services</option>
+    <option>Real Estate</option>
+    <option>Retail</option>
+    <option>Technology</option>
+    <option>Transportation</option>
+    <option>Utilities</option>
+    <option>Wholesale</option>
+  </select>
+
+  <label class="btn" id="filter-btn">Select Filter</label>
+</div>
+
+
 {{#each documents as |document|}}
 
 <div class="card card-compact w-120 bg-base-100 shadow-xl">
@@ -61,7 +90,7 @@
     <h2 class="card-title">Field: {{career_field}} </h2>
     <h2 class="card-title">{{post_title}}</h2>
     <p>{{text}}</p>
-    <h2 class="card-title">{{date_uploaded}}</h2>
+    <h2 class="card-title">Posted on: {{format_date date_uploaded}}</h2>
     <div class="card-actions justify-end">
       <a href='/post/question/{{id}}'>
         <button class="btn btn-primary"> View Post </button>
