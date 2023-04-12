@@ -56,7 +56,6 @@
                 <!-- The button to open modal -->
                     <label for="my-modal" class="btn">submit</label>
 
-                    <!-- Put this part before </body> tag -->
                     <input type="checkbox" id="my-modal" class="modal-toggle" />
                     <div class="modal">
                     <div class="modal-box">
@@ -87,17 +86,17 @@
             </tr>
             </thead>
             <tbody>
-                 {{#each documents as |document|}}
+            {{#each documents as |document|}}
                 <tr>
-                <th>
-                <label data-id="{{id}}" for="my-modal-2" class="btn">Delete</label>
-                </th>
-                <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{id}}</a></td>
-                <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{post_title}}</a></td>
-                <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{career_field}}</a></td>
-                <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{format_date date_uploaded}}</a></td>
-                {{/each}}
-            </tr>
+                    <th>
+                        <label data-id="{{id}}" class="btn">Delete</label>
+                    </th>
+                    <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{id}}</a></td>
+                    <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{post_title}}</a></td>
+                    <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{career_field}}</a></td>
+                    <td ><a data-fallback="{{id}}" href="/post/question/{{id}}">{{format_date date_uploaded}}</a></td>
+                </tr>
+              {{/each}}
             </tbody>
         </table>
         </div>

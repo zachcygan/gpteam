@@ -100,12 +100,6 @@ updateButton.addEventListener('click', async (event) => {
   }
 })
 
-// setInterval(function() {
-//   if (bio.textContent !== originalBio) {
-//     updateButton.classList.remove('hidden')
-//     console.log('changed')
-//   }
-// })
 
 document.querySelector('#document-table').addEventListener('click', deleteDocumentHandler);
 document.querySelector('#file-upload-form').addEventListener('submit', AWSupload);
