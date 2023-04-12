@@ -115,13 +115,13 @@ router.get('/user', withAuth, async (req, res) => {
     }
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/blog');
-        return;
-    }
-    res.render('login');
-});
+// router.get('/login', (req, res) => {
+//     if (req.session.logged_in) {
+//         res.redirect('/blog');
+//         return;
+//     }
+//     res.render('login');
+// });
 
 
 router.post('/', withAuth, async (req, res) => {
