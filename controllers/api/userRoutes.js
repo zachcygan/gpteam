@@ -84,7 +84,6 @@ router.post('/comment', async (req, res) => {
             comment_text: req.body.comment_text,
             document_id: req.body.document_id,
             user_id: req.session.user_id,
-            question_id: req.body.question_id
         })
 
         res.status(200).json(commentData);
