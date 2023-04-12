@@ -33,15 +33,7 @@ Comment.init(
                 model:'documents',
                 key: 'id',
             } 
-        },
-        question_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'documents',
-                key: 'id'
-            }
         }
-
     },
     {
         sequelize,

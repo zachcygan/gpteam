@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Document, Question, Comment } = require('../models');
+const { User, Document, Comment } = require('../models');
 const withAuth = require('../util/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -21,25 +21,9 @@ router.get('/', withAuth, async (req, res) => {
         });
         const documents = documentData.map((document) => document.get({ plain: true }));
 
-        const questionData = await Question.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['comment_text'],
-                },
-            ],
-        });
-
-        const questions = questionData.map((document) => document.get({ plain: true }));
-
 
         res.render('postpage', {
             documents,
-            questions,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
@@ -52,8 +36,7 @@ router.get('/document/:id', async (req, res) => {
         const documentData = await Document.findByPk(req.param.id, {
             include: [
                 {
-                    model: User, Question, Comment,
-                    attributes: ['name', 'question_text', 'comment_text'],
+                    model: User, Comment,
                 },
             ],
         });
@@ -101,7 +84,6 @@ router.get('/user', withAuth, async (req, res) => {
             attributes: { exclude: ['password'] },
             include: [
                 { model: Document },
-                { model: Question }
             ],
         });
         const user = userData.get({ plain: true });
