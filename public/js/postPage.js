@@ -50,20 +50,21 @@ const handleFilter = (event) => {
 
   const fltr = document.querySelector(".filter-btn").textContent;
 
-  const response = await fetch('') {
-    method: 'GET',
+//   const response = fetch('fltr') {
+//     method: 'GET',
+//     body: 
 
-  }
+//   }
       
-    }
+//     }
  
-
+}
 
   // query seelect the filter field .value/.textContent
   // do get route
   // fetch()
   // document.replace
-}
+
 
 document.querySelector(".filter-btn").addEventListener('onClick', handleFilter)
 
