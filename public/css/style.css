@@ -194,7 +194,6 @@ color: #e2e8f0;
 
 .comment-section {
    width: 50%;
-
 }
 
 .post-container {
@@ -206,6 +205,7 @@ color: #e2e8f0;
    font-weight: bold;
    font-size: 50px;
    width: 100%;
+   text-align: center;
 }
  
 .comment-bubbles {
@@ -234,6 +234,7 @@ color: #e2e8f0;
     iframe {
         background-color: rgb(131, 10, 91);
         max-height: 700px;
+        text-align: center;
     }
   }
 .filter-fld{
@@ -254,4 +255,21 @@ color: #e2e8f0;
 }
 .profile-page{
     height:100%;
+}
+
+.about-site {
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    color: black;
+}
+
+.about-txt {
+    background-color: white;
+    text-align: center;
+    color: rgb(61, 61, 61);
+    font-size: 20px;
+    padding-left: 3%;
+    padding-right: 3%;
 }
