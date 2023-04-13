@@ -50,12 +50,13 @@ const deleteDocumentHandler = async (event) => {
   //this grabs the id from the delete button to use in the delete param
   const id = event.target.dataset.id;
   const fallback = event.target.dataset.fallback;
-  console.log(fallback);
-
+ 
   if(id){
-    const response = await fetch(`/api/document/${id}`, {
+    const endpoint = `/api/document/${id}`;
+    const response = await fetch(`${endpoint}`, {
     method: 'DELETE'
   });
+  console.log(response);
     if (response.ok) {
     //if the reponse from the route is ok, reloads the profile page
     document.location.replace('/profile');
