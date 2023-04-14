@@ -239,7 +239,7 @@ color: #e2e8f0;
   }
 
  
-  @media screen and (max-width: 499px) {
+  @media screen and (max-width: 630px) {
     .photo-frame {
      
         min-width: 95%;
@@ -247,7 +247,7 @@ color: #e2e8f0;
     }
   }
   
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 631px) {
     .photo-frame {
       
         max-height: 700px;
