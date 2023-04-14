@@ -1,23 +1,23 @@
 <div class="container-2">
-	<div class="top-half">
-		<h2 class="post-container">{{user.name}}'s Current Post</h2>
-		<div class="photo-frame">
-			{{#if bucket_link}}
-			<div class="flex flex-col w-full">
-				<iframe class="w-full" src="https://docs.google.com/gview?url={{bucket_link}}&embedded=true"
-				 frameborder="0"></iframe>
-				<div class="mt-4 p-4 border border-gray-300">
-					{{text}}
-				</div>
-			</div>
-			{{else}}
-			<div class="flex flex-col w-full">
-				<div class="mt-4 p-4">
-					{{text}}
-				</div>
-				{{/if}}
-			</div>
-		</div>
+  <div class="top-half">
+    <h2 class="post-container">{{user.name}}'s Current Post</h2>
+    <div class="photo-frame">
+      {{#if bucket_link}}
+      <div class="flex flex-col w-full justify-content-center items-center">
+        <iframe class="w-full" src="https://docs.google.com/gview?url={{bucket_link}}&embedded=true"
+          style="width:100%; height:600px;" frameborder="0"></iframe>
+        <div class="mt-4 p-4 border border-gray-300">
+          {{text}}
+        </div>
+      </div>
+      {{else}}
+      <div class="flex flex-col w-full">
+        <div class="mt-4 p-4">
+          {{text}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
 
 
 		<section class="comment-section object-right-top">
